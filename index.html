@@ -6,7 +6,6 @@
 <title>Museum Sejarah Dunia & Peradaban Negara</title>
 <meta name="description" content="Museum virtual interaktif menjelajahi sejarah dunia, peradaban kuno, dan perjalanan kemerdekaan negara-negara di dunia." />
 
-<!-- Google Fonts: Playfair Display (judul klasik) + Inter (body modern) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -17,7 +16,6 @@
    Tema: Dark Gallery Elegan dengan Aksen Emas Klasik
    ========================================================= */
 
-/* ---------- RESET & VARIABEL GLOBAL ---------- */
 *,
 *::before,
 *::after {
@@ -27,26 +25,23 @@
 }
 
 :root {
-    /* Palet warna museum virtual */
-    --bg-primary: #0d0d0d;          /* Hitam arang pekat */
-    --bg-secondary: #1a1a1a;        /* Abu-abu sangat tua */
-    --bg-tertiary: #242424;         /* Abu-abu tua untuk card */
-    --bg-elevated: #2d2d2d;         /* Hover / elevated state */
-    --gold: #d4af37;                /* Emas klasik */
-    --gold-light: #f0d77a;          /* Emas terang */
-    --gold-dark: #a8862a;           /* Emas gelap */
-    --wood: #8b6f47;                /* Cokelat kayu klasik */
-    --text-primary: #f5f1e8;        /* Krem terang */
-    --text-secondary: #c8c2b3;      /* Krem redup */
-    --text-muted: #8a8477;          /* Abu-abu krem */
+    --bg-primary: #0d0d0d;
+    --bg-secondary: #1a1a1a;
+    --bg-tertiary: #242424;
+    --bg-elevated: #2d2d2d;
+    --gold: #d4af37;
+    --gold-light: #f0d77a;
+    --gold-dark: #a8862a;
+    --wood: #8b6f47;
+    --text-primary: #f5f1e8;
+    --text-secondary: #c8c2b3;
+    --text-muted: #8a8477;
     --border-gold: rgba(212, 175, 55, 0.3);
     --shadow-gold: 0 0 30px rgba(212, 175, 55, 0.15);
     --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-html {
-    scroll-behavior: smooth;        /* Smooth scrolling global */
-}
+html { scroll-behavior: smooth; }
 
 body {
     font-family: 'Inter', sans-serif;
@@ -59,7 +54,6 @@ body {
         radial-gradient(circle at 80% 80%, rgba(139, 111, 71, 0.05) 0%, transparent 40%);
 }
 
-/* Scrollbar kustom ala museum */
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--bg-secondary); }
 ::-webkit-scrollbar-thumb {
@@ -67,7 +61,6 @@ body {
     border-radius: 5px;
 }
 
-/* ---------- TIPOGRAFI ---------- */
 h1, h2, h3, h4 {
     font-family: 'Playfair Display', serif;
     font-weight: 700;
@@ -76,12 +69,11 @@ h1, h2, h3, h4 {
 }
 
 .cinzel {
-    font-family: 'Cinzel', serif;   /* Font dekoratif untuk judul utama */
+    font-family: 'Cinzel', serif;
     letter-spacing: 3px;
     text-transform: uppercase;
 }
 
-/* ---------- NAVIGASI ATAS ---------- */
 .navbar {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -144,15 +136,9 @@ h1, h2, h3, h4 {
     transition: width 0.3s ease;
 }
 
-.nav-links a:hover {
-    color: var(--gold);
-}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { width: 100%; }
 
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-/* Hamburger menu untuk mobile */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -169,7 +155,6 @@ h1, h2, h3, h4 {
     transition: var(--transition);
 }
 
-/* ---------- LOBI / HERO SECTION ---------- */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -184,7 +169,6 @@ h1, h2, h3, h4 {
         radial-gradient(ellipse at center, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
 }
 
-/* Ornamen pilar museum di kiri-kanan hero */
 .hero::before,
 .hero::after {
     content: '';
@@ -197,10 +181,7 @@ h1, h2, h3, h4 {
 .hero::before { left: 5%; }
 .hero::after { right: 5%; }
 
-.hero-content {
-    max-width: 900px;
-    z-index: 2;
-}
+.hero-content { max-width: 900px; z-index: 2; }
 
 .hero-subtitle {
     font-family: 'Cinzel', serif;
@@ -265,21 +246,14 @@ h1, h2, h3, h4 {
     z-index: -1;
 }
 
-.hero-cta:hover {
-    color: var(--bg-primary);
-}
+.hero-cta:hover { color: var(--bg-primary); }
+.hero-cta:hover::before { left: 0; }
 
-.hero-cta:hover::before {
-    left: 0;
-}
-
-/* Animasi fade-up untuk elemen hero */
 @keyframes fadeUp {
     from { opacity: 0; transform: translateY(30px); }
     to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ---------- SECTION UMUM ---------- */
 section {
     padding: 6rem 2rem;
     max-width: 1400px;
@@ -321,13 +295,11 @@ section {
     font-size: 1.05rem;
 }
 
-/* ---------- TIMELINE ERA SEJARAH ---------- */
 .timeline {
     position: relative;
     padding: 2rem 0;
 }
 
-/* Garis tengah timeline */
 .timeline::before {
     content: '';
     position: absolute;
@@ -353,13 +325,8 @@ section {
     transform: translateY(0);
 }
 
-.era-item:nth-child(odd) {
-    flex-direction: row;
-}
-
-.era-item:nth-child(even) {
-    flex-direction: row-reverse;
-}
+.era-item:nth-child(odd) { flex-direction: row; }
+.era-item:nth-child(even) { flex-direction: row-reverse; }
 
 .era-content {
     width: 45%;
@@ -396,7 +363,6 @@ section {
     font-size: 0.95rem;
 }
 
-/* Titik tengah timeline */
 .era-dot {
     position: absolute;
     left: 50%;
@@ -409,7 +375,6 @@ section {
     box-shadow: 0 0 0 4px var(--bg-primary);
 }
 
-/* ---------- GALERI NEGARA ---------- */
 .search-container {
     max-width: 600px;
     margin: 0 auto 3rem;
@@ -444,7 +409,6 @@ section {
     pointer-events: none;
 }
 
-/* Filter kategori benua */
 .filter-tabs {
     display: flex;
     justify-content: center;
@@ -473,7 +437,6 @@ section {
     border-color: var(--gold);
 }
 
-/* Grid kartu negara */
 .countries-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -522,9 +485,7 @@ section {
     background: radial-gradient(circle at center, rgba(212, 175, 55, 0.15), transparent 70%);
 }
 
-.country-info {
-    padding: 1.5rem;
-}
+.country-info { padding: 1.5rem; }
 
 .country-name {
     font-size: 1.4rem;
@@ -567,7 +528,6 @@ section {
     color: var(--bg-primary);
 }
 
-/* ---------- MODAL POP-UP ---------- */
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -602,9 +562,7 @@ section {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(212, 175, 55, 0.2);
 }
 
-.modal-overlay.active .modal {
-    transform: scale(1);
-}
+.modal-overlay.active .modal { transform: scale(1); }
 
 .modal-close {
     position: absolute;
@@ -653,13 +611,9 @@ section {
     font-size: 0.85rem;
 }
 
-.modal-body {
-    padding: 2rem;
-}
+.modal-body { padding: 2rem; }
 
-.modal-section {
-    margin-bottom: 2.5rem;
-}
+.modal-section { margin-bottom: 2.5rem; }
 
 .modal-section-title {
     font-family: 'Cinzel', serif;
@@ -691,7 +645,6 @@ section {
     line-height: 1.7;
 }
 
-/* Galeri tokoh dalam modal */
 .figures-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -741,7 +694,6 @@ section {
     font-style: italic;
 }
 
-/* Modal detail tokoh */
 .figure-modal-content {
     padding: 2rem;
     text-align: center;
@@ -784,7 +736,6 @@ section {
     border-radius: 4px;
 }
 
-/* ---------- FOOTER ---------- */
 footer {
     background: var(--bg-secondary);
     border-top: 1px solid var(--border-gold);
@@ -817,9 +768,7 @@ footer {
     letter-spacing: 1px;
 }
 
-/* ---------- RESPONSIVE ---------- */
 @media (max-width: 900px) {
-    /* Timeline jadi vertikal penuh di mobile */
     .timeline::before { left: 20px; }
     .era-item,
     .era-item:nth-child(even) {
@@ -827,9 +776,7 @@ footer {
         padding-left: 50px;
     }
     .era-content { width: 100%; }
-    .era-dot {
-        left: 20px;
-    }
+    .era-dot { left: 20px; }
 }
 
 @media (max-width: 768px) {
@@ -854,7 +801,6 @@ footer {
     .modal-country-name { font-size: 1.8rem; }
 }
 
-/* ---------- UTILITAS ANIMASI ---------- */
 .fade-in {
     opacity: 0;
     transform: translateY(30px);
@@ -869,9 +815,6 @@ footer {
 </head>
 <body>
 
-<!-- =========================================================
-     NAVIGASI UTAMA
-     ========================================================= -->
 <nav class="navbar">
     <div class="nav-container">
         <div class="logo">Museum Historia</div>
@@ -887,9 +830,6 @@ footer {
     </div>
 </nav>
 
-<!-- =========================================================
-     LOBI MUSEUM (HERO)
-     ========================================================= -->
 <header class="hero" id="home">
     <div class="hero-content">
         <p class="hero-subtitle">Selamat Datang di</p>
@@ -902,9 +842,6 @@ footer {
     </div>
 </header>
 
-<!-- =========================================================
-     ERA SEJARAH DUNIA (TIMELINE)
-     ========================================================= -->
 <section id="eras">
     <div class="section-header fade-in">
         <p class="section-eyebrow">Kategori Utama</p>
@@ -916,7 +853,6 @@ footer {
     </div>
 
     <div class="timeline" id="timeline">
-        <!-- Era 1 -->
         <div class="era-item">
             <div class="era-content">
                 <p class="era-year">± 2,5 Juta – 3000 SM</p>
@@ -930,7 +866,6 @@ footer {
             <div class="era-dot"></div>
         </div>
 
-        <!-- Era 2 -->
         <div class="era-item">
             <div class="era-content">
                 <p class="era-year">3000 SM – 476 M</p>
@@ -944,7 +879,6 @@ footer {
             <div class="era-dot"></div>
         </div>
 
-        <!-- Era 3 -->
         <div class="era-item">
             <div class="era-content">
                 <p class="era-year">476 – 1453</p>
@@ -958,7 +892,6 @@ footer {
             <div class="era-dot"></div>
         </div>
 
-        <!-- Era 4 -->
         <div class="era-item">
             <div class="era-content">
                 <p class="era-year">1453 – 1750</p>
@@ -972,7 +905,6 @@ footer {
             <div class="era-dot"></div>
         </div>
 
-        <!-- Era 5 -->
         <div class="era-item">
             <div class="era-content">
                 <p class="era-year">1750 – 1945</p>
@@ -986,7 +918,6 @@ footer {
             <div class="era-dot"></div>
         </div>
 
-        <!-- Era 6 -->
         <div class="era-item">
             <div class="era-content">
                 <p class="era-year">1945 – Sekarang</p>
@@ -1002,9 +933,6 @@ footer {
     </div>
 </section>
 
-<!-- =========================================================
-     GALERI NEGARA-NEGARA DI DUNIA
-     ========================================================= -->
 <section id="countries">
     <div class="section-header fade-in">
         <p class="section-eyebrow">Koleksi Utama</p>
@@ -1015,7 +943,6 @@ footer {
         </p>
     </div>
 
-    <!-- Search bar -->
     <div class="search-container fade-in">
         <span class="search-icon">🔍</span>
         <input
@@ -1027,7 +954,6 @@ footer {
         />
     </div>
 
-    <!-- Filter benua -->
     <div class="filter-tabs fade-in" id="filterTabs">
         <button class="filter-btn active" data-filter="all">Semua</button>
         <button class="filter-btn" data-filter="asia">Asia</button>
@@ -1037,13 +963,9 @@ footer {
         <button class="filter-btn" data-filter="oceania">Oceania</button>
     </div>
 
-    <!-- Grid negara (diisi oleh JavaScript) -->
     <div class="countries-grid" id="countriesGrid"></div>
 </section>
 
-<!-- =========================================================
-     TENTANG MUSEUM
-     ========================================================= -->
 <section id="about">
     <div class="section-header fade-in">
         <p class="section-eyebrow">Tentang Pameran</p>
@@ -1058,9 +980,6 @@ footer {
     </div>
 </section>
 
-<!-- =========================================================
-     FOOTER
-     ========================================================= -->
 <footer>
     <div class="footer-logo">🏛️ Museum Historia</div>
     <p class="footer-text">
@@ -1072,9 +991,6 @@ footer {
     </p>
 </footer>
 
-<!-- =========================================================
-     MODAL: Detail Negara
-     ========================================================= -->
 <div class="modal-overlay" id="countryModal">
     <div class="modal">
         <button class="modal-close" id="closeCountryModal">✕</button>
@@ -1096,9 +1012,6 @@ footer {
     </div>
 </div>
 
-<!-- =========================================================
-     MODAL: Detail Tokoh
-     ========================================================= -->
 <div class="modal-overlay" id="figureModal">
     <div class="modal" style="max-width: 600px;">
         <button class="modal-close" id="closeFigureModal">✕</button>
@@ -1118,11 +1031,9 @@ footer {
            modal interaktif, dan animasi scroll.
    ========================================================= */
 
-/* ---------- DATA NEGARA ----------
-   Struktur data dirancang modular agar mudah ditambah negara baru.
-   Cukup tambahkan objek baru ke array COUNTRIES. */
-
+/* ---------- DATA NEGARA ---------- */
 const COUNTRIES = [
+    /* ===== NEGARA DARI VERSI SEBELUMNYA (8 negara) ===== */
     {
         id: 'indonesia',
         name: 'Indonesia',
@@ -1130,32 +1041,17 @@ const COUNTRIES = [
         emblem: '🦅',
         preview: 'Negara kepulauan terbesar di dunia dengan warisan kerajaan maritim dan perjuangan kemerdekaan yang heroik.',
         history: [
-            {
-                period: 'Masa Kerajaan Kuno',
-                text: 'Nusantara menjadi pusat peradaban maritim dengan kerajaan Hindu-Buddha seperti Sriwijaya (abad ke-7) yang menguasai jalur perdagangan Selat Malaka, dan Majapahit (abad ke-14) di bawah Patih Gajah Mada yang menyatukan Nusantara melalui Sumpah Palapa. Candi Borobudur dan Prambanan menjadi bukti kejayaan masa ini.'
-            },
-            {
-                period: 'Masa Kesultanan Islam',
-                text: 'Islam masuk melalui jalur perdagangan dan melahirkan kesultanan besar seperti Samudera Pasai, Demak, Aceh, Mataram Islam, Gowa-Tallo, dan Ternate-Tidor. Masa ini menjadi jembatan antara peradaban Hindu-Buddha dan era kolonial.'
-            },
-            {
-                period: 'Masa Penjajahan',
-                text: 'Portugis tiba tahun 1512, disusul Belanda melalui VOC (1602) yang memonopoli rempah-rempah. Belanda menguasai hampir seluruh Nusantara selama ±350 tahun, melakukan tanam paksa (cultuurstelsel) dan kerja rodi. Perlawanan muncul dari Diponegoro, Imam Bonjol, Cut Nyak Dien, dan banyak pahlawan lainnya.'
-            },
-            {
-                period: 'Pergerakan Nasional',
-                text: 'Awal abad ke-20 lahir kesadaran berbangsa. Budi Utomo (1908) menandai kebangkitan nasional, disusul Sumpah Pemuda 28 Oktober 1928 yang mengikrarkan satu tanah air, satu bangsa, satu bahasa: Indonesia.'
-            },
-            {
-                period: 'Proklamasi & Era Modern',
-                text: '17 Agustus 1945 Soekarno-Hatta memproklamasikan kemerdekaan Indonesia. Setelah perjuangan diplomasi dan fisik, Belanda mengakui kedaulatan tahun 1949. Indonesia kini menjadi negara demokrasi terbesar ke-3 di dunia dengan 270+ juta penduduk dan ekonomi G20.'
-            }
+            { period: 'Masa Kerajaan Kuno', text: 'Nusantara menjadi pusat peradaban maritim dengan kerajaan Hindu-Buddha seperti Sriwijaya (abad ke-7) dan Majapahit (abad ke-14) di bawah Patih Gajah Mada. Candi Borobudur dan Prambanan menjadi bukti kejayaan masa ini.' },
+            { period: 'Masa Kesultanan Islam', text: 'Islam masuk melalui jalur perdagangan dan melahirkan kesultanan besar seperti Samudera Pasai, Demak, Aceh, Mataram Islam, Gowa-Tallo, dan Ternate-Tidor.' },
+            { period: 'Masa Penjajahan', text: 'Portugis tiba tahun 1512, disusul Belanda melalui VOC (1602). Belanda menguasai hampir seluruh Nusantara selama ±350 tahun. Perlawanan muncul dari Diponegoro, Imam Bonjol, Cut Nyak Dien, dan banyak pahlawan lainnya.' },
+            { period: 'Pergerakan Nasional', text: 'Awal abad ke-20 lahir kesadaran berbangsa. Budi Utomo (1908) menandai kebangkitan nasional, disusul Sumpah Pemuda 28 Oktober 1928.' },
+            { period: 'Proklamasi & Era Modern', text: '17 Agustus 1945 Soekarno-Hatta memproklamasikan kemerdekaan Indonesia. Indonesia kini menjadi negara demokrasi terbesar ke-3 di dunia dengan 270+ juta penduduk.' }
         ],
         figures: [
-            { name: 'Ir. Soekarno', role: 'Proklamator & Presiden Pertama', initials: 'S', bio: 'Bapak Proklamasi dan Presiden pertama Republik Indonesia. Orator ulung yang mencetuskan Pancasila pada 1 Juni 1945 dan membacakan teks Proklamasi bersama Mohammad Hatta pada 17 Agustus 1945. Pemimpin Gerakan Non-Blok dan tokoh dunia.' },
-            { name: 'Drs. Mohammad Hatta', role: 'Proklamator & Wakil Presiden Pertama', initials: 'H', bio: 'Bapak Koperasi Indonesia dan Wakil Presiden pertama. Pemikir cerdas yang bersama Soekarno menyusun teks proklamasi. Dikenal sebagai sosok sederhana, disiplin, dan cinta buku.' },
-            { name: 'Pangeran Diponegoro', role: 'Pahlawan Perang Jawa', initials: 'D', bio: 'Pemimpin Perang Jawa (1825-1830) melawan Belanda. Perang terbesar yang dihadapi Belanda di Nusantara. Meski akhirnya ditangkap dan diasingkan ke Makassar, semangatnya menginspirasi generasi pejuang berikutnya.' },
-            { name: 'R.A. Kartini', role: 'Pioneer Emansipasi Wanita', initials: 'K', bio: 'Putra Jepara yang memperjuangkan hak pendidikan perempuan melalui surat-suratnya yang dibukukan menjadi "Habis Gelap Terbitlah Terang". Hari lahirnya (21 April) diperingati sebagai Hari Kartini.' }
+            { name: 'Ir. Soekarno', role: 'Proklamator & Presiden Pertama', initials: 'S', bio: 'Bapak Proklamasi dan Presiden pertama Republik Indonesia. Orator ulung yang mencetuskan Pancasila dan membacakan teks Proklamasi bersama Mohammad Hatta pada 17 Agustus 1945.' },
+            { name: 'Drs. Mohammad Hatta', role: 'Proklamator & Wakil Presiden Pertama', initials: 'H', bio: 'Bapak Koperasi Indonesia dan Wakil Presiden pertama. Pemikir cerdas yang bersama Soekarno menyusun teks proklamasi.' },
+            { name: 'Pangeran Diponegoro', role: 'Pahlawan Perang Jawa', initials: 'D', bio: 'Pemimpin Perang Jawa (1825-1830) melawan Belanda. Perang terbesar yang dihadapi Belanda di Nusantara.' },
+            { name: 'R.A. Kartini', role: 'Pioneer Emansipasi Wanita', initials: 'K', bio: 'Putra Jepara yang memperjuangkan hak pendidikan perempuan melalui surat-suratnya yang dibukukan menjadi "Habis Gelap Terbitlah Terang".' }
         ]
     },
     {
@@ -1163,34 +1059,19 @@ const COUNTRIES = [
         name: 'Amerika Serikat',
         continent: 'amerika',
         emblem: '🗽',
-        preview: 'Negara adidaya modern yang lahir dari revolusi melawan kolonialisme Inggris dan membangun demokrasi konstitusional.',
+        preview: 'Negara adidaya modern yang lahir dari revolusi melawan kolonialisme Inggris.',
         history: [
-            {
-                period: 'Penduduk Asli',
-                text: 'Sebelum kedatangan Eropa, benua Amerika dihuni oleh ratusan suku asli (Native Americans) seperti Navajo, Sioux, Cherokee, Iroquois, dan Pueblo dengan peradaban dan kebudayaan yang kaya.'
-            },
-            {
-                period: 'Kolonialisme Eropa',
-                text: 'Columbus tiba tahun 1492. Inggris mendirikan 13 koloni di pesisir timur (1607-1732). Prancis menguasai Louisiana, Spanyol di Florida dan barat daya. Periode ini diwarnai konflik dengan penduduk asli dan perdagangan budak Afrika.'
-            },
-            {
-                period: 'Revolusi & Kemerdekaan',
-                text: '4 Juli 1776, Kongres Kontinental mendeklarasikan kemerdekaan dari Inggris. Dipimpin George Washington, perang revolusi berakhir dengan kemenangan Amerika. Konstitusi AS diratifikasi tahun 1788 dengan Bill of Rights (1791).'
-            },
-            {
-                period: 'Perang Saudara & Ekspansi',
-                text: 'Perang Saudara (1861-1865) mengakhiri perbudakan di bawah Presiden Abraham Lincoln. AS berekspansi ke barat (Louisiana Purchase, Perang Meksiko) dan menjadi kekuatan industri utama.'
-            },
-            {
-                period: 'Era Modern',
-                text: 'Berperan besar dalam Perang Dunia I & II, memenangkan Perang Dingin melawan Uni Soviet (1991), dan menjadi kekuatan ekonomi, teknologi, dan budaya dominan dunia hingga kini.'
-            }
+            { period: 'Penduduk Asli', text: 'Benua Amerika dihuni oleh ratusan suku asli (Native Americans) seperti Navajo, Sioux, Cherokee, dan Iroquois.' },
+            { period: 'Kolonialisme Eropa', text: 'Columbus tiba tahun 1492. Inggris mendirikan 13 koloni di pesisir timur (1607-1732).' },
+            { period: 'Revolusi & Kemerdekaan', text: '4 Juli 1776, Kongres Kontinental mendeklarasikan kemerdekaan dari Inggris. Dipimpin George Washington.' },
+            { period: 'Perang Saudara & Ekspansi', text: 'Perang Saudara (1861-1865) mengakhiri perbudakan di bawah Presiden Abraham Lincoln.' },
+            { period: 'Era Modern', text: 'Berperan besar dalam Perang Dunia I & II, memenangkan Perang Dingin melawan Uni Soviet (1991), dan menjadi kekuatan ekonomi dunia.' }
         ],
         figures: [
-            { name: 'George Washington', role: 'Bapak Bangsa & Presiden Pertama', initials: 'G', bio: 'Panglima Perang Kemerdekaan dan Presiden AS pertama (1789-1797). Menolak menjadi raja dan menetapkan tradisi demokrasi dua periode yang menjadi fondasi republik.' },
-            { name: 'Abraham Lincoln', role: 'Presiden ke-16', initials: 'A', bio: 'Memimpin AS melewati Perang Saudara dan mengeluarkan Emancipation Proclamation (1863) yang mengakhiri perbudakan. Terbunuh oleh assassin tahun 1865.' },
-            { name: 'Thomas Jefferson', role: 'Penulis Deklarasi Kemerdekaan', initials: 'T', bio: 'Penulis utama Declaration of Independence (1776) dan Presiden ke-3. Pemikir Pencerahan yang merumuskan prinsip "semua manusia diciptakan setara".' },
-            { name: 'Martin Luther King Jr.', role: 'Pemimpin Hak Sipil', initials: 'M', bio: 'Pendeta Baptis yang memimpin gerakan hak sipil dengan filosofi non-kekerasan. Pidato "I Have a Dream" (1963) menjadi ikon perjuangan kesetaraan ras.' }
+            { name: 'George Washington', role: 'Bapak Bangsa & Presiden Pertama', initials: 'G', bio: 'Panglima Perang Kemerdekaan dan Presiden AS pertama (1789-1797).' },
+            { name: 'Abraham Lincoln', role: 'Presiden ke-16', initials: 'A', bio: 'Memimpin AS melewati Perang Saudara dan mengeluarkan Emancipation Proclamation (1863).' },
+            { name: 'Thomas Jefferson', role: 'Penulis Deklarasi Kemerdekaan', initials: 'T', bio: 'Penulis utama Declaration of Independence (1776) dan Presiden ke-3.' },
+            { name: 'Martin Luther King Jr.', role: 'Pemimpin Hak Sipil', initials: 'M', bio: 'Pendeta Baptis yang memimpin gerakan hak sipil dengan filosofi non-kekerasan.' }
         ]
     },
     {
@@ -1198,34 +1079,19 @@ const COUNTRIES = [
         name: 'Jepang',
         continent: 'asia',
         emblem: '🗾',
-        preview: 'Negeri Matahari Terbit yang memadukan tradisi kekaisaran ribuan tahun dengan modernitas teknologi mutakhir.',
+        preview: 'Negeri Matahari Terbit yang memadukan tradisi kekaisaran dengan modernitas teknologi.',
         history: [
-            {
-                period: 'Jepang Kuno',
-                text: 'Menurut legenda, Jepang didirikan oleh Kaisar Jimmu tahun 660 SM. Periode Yayoi (300 SM-300 M) memperkenalkan pertanian padi. Kebudayaan Tiongkok dan Buddha masuk melalui Korea pada abad ke-6.'
-            },
-            {
-                period: 'Periode Klasik & Feodal',
-                text: 'Periode Nara dan Heian (710-1185) menjadi puncak kebudayaan istana. Lahirnya kelas samurai dan Keshogunan Kamakura (1185). Periode Sengoku (abad 15-16) adalah era perang saudara sebelum penyatuan oleh Oda Nobunaga, Toyotomi Hideyoshi, dan Tokugawa Ieyasu.'
-            },
-            {
-                period: 'Keshogunan Tokugawa',
-                text: '1603-1868, Jepang menutup diri (sakoku) selama 250 tahun. Kebudayaan Eian berkembang: kabuki, ukiyo-e, upacara teh. Tahun 1853, Komodor Perry memaksa Jepang membuka diri.'
-            },
-            {
-                period: 'Restorasi Meiji & Imperialisme',
-                text: '1868 Restorasi Meiji memodernisasi Jepang secara drastis. Kemenangan atas Tiongkok (1895) dan Rusia (1905). Jepang menjadi kekuatan imperialis, menganeksasi Korea (1910), dan berperang di Perang Dunia II hingga kalah tahun 1945.'
-            },
-            {
-                period: 'Era Modern',
-                text: 'Di bawah konstitusi pasifis 1947 dan Kaisar Hirohito, Jepang bangkit menjadi kekuatan ekonomi ke-2 dunia. Era Reiwa (2019-sekarang) di bawah Kaisar Naruhito melanjutkan tradisi sambil menghadapi tantangan demografi.'
-            }
+            { period: 'Jepang Kuno', text: 'Menurut legenda, Jepang didirikan oleh Kaisar Jimmu tahun 660 SM. Kebudayaan Tiongkok dan Buddha masuk melalui Korea pada abad ke-6.' },
+            { period: 'Periode Klasik & Feodal', text: 'Periode Nara dan Heian menjadi puncak kebudayaan istana. Lahirnya kelas samurai dan Keshogunan Kamakura (1185).' },
+            { period: 'Keshogunan Tokugawa', text: '1603-1868, Jepang menutup diri (sakoku) selama 250 tahun. Tahun 1853, Komodor Perry memaksa Jepang membuka diri.' },
+            { period: 'Restorasi Meiji & Imperialisme', text: '1868 Restorasi Meiji memodernisasi Jepang. Jepang menjadi kekuatan imperialis hingga kalah dalam Perang Dunia II tahun 1945.' },
+            { period: 'Era Modern', text: 'Di bawah konstitusi pasifis 1947, Jepang bangkit menjadi kekuatan ekonomi ke-2 dunia.' }
         ],
         figures: [
-            { name: 'Kaisar Meiji', role: 'Pemimpin Restorasi Meiji', initials: 'M', bio: 'Kaisar ke-122 (1867-1912) yang membawa Jepang dari negara feodal tertutup menjadi negara modern industri. Era pemerintahannya mengubah Jepang menjadi kekuatan dunia.' },
-            { name: 'Tokugawa Ieyasu', role: 'Shogun Pertama Edo', initials: 'T', bio: 'Pemenang Pertempuran Sekigahara (1600) dan pendiri Keshogunan Tokugawa yang menyatukan Jepang dan memerintah selama 268 tahun perdamaian.' },
-            { name: 'Oda Nobunaga', role: 'Penyatap Jepang', initials: 'O', bio: 'Daimyo yang memulai penyatuan Jepang setelah era Sengoku. Dikenal sebagai jenius militer yang kejam namun visioner. Terbunuh dalam Insiden Honnoji 1582.' },
-            { name: 'Saigo Takamori', role: 'Samurai Terakhir', initials: 'S', bio: 'Tokoh Restorasi Meiji yang kemudian memimpin Pemberontakan Satsuma (1877) melawan modernisasi. Simbol semangat bushido dan romantisme samurai.' }
+            { name: 'Kaisar Meiji', role: 'Pemimpin Restorasi Meiji', initials: 'M', bio: 'Kaisar ke-122 (1867-1912) yang membawa Jepang dari negara feodal menjadi negara modern.' },
+            { name: 'Tokugawa Ieyasu', role: 'Shogun Pertama Edo', initials: 'T', bio: 'Pemenang Pertempuran Sekigahara (1600) dan pendiri Keshogunan Tokugawa.' },
+            { name: 'Oda Nobunaga', role: 'Penyatap Jepang', initials: 'O', bio: 'Daimyo yang memulai penyatuan Jepang setelah era Sengoku.' },
+            { name: 'Saigo Takamori', role: 'Samurai Terakhir', initials: 'S', bio: 'Tokoh Restorasi Meiji yang kemudian memimpin Pemberontakan Satsuma (1877).' }
         ]
     },
     {
@@ -1233,34 +1099,19 @@ const COUNTRIES = [
         name: 'Mesir',
         continent: 'afrika',
         emblem: '🏺',
-        preview: 'Peradaban tertua di dunia yang memberi warisan piramida, hieroglif, dan ilmu pengetahuan yang mengubah sejarah.',
+        preview: 'Peradaban tertua di dunia yang memberi warisan piramida dan ilmu pengetahuan.',
         history: [
-            {
-                period: 'Mesir Kuno',
-                text: 'Peradaban Mesir lahir sekitar 3100 SM ketika Firaun Menes menyatukan Mesir Hulu dan Hilir. Membangun piramida Giza (2500 SM), mengembangkan hieroglif, kalender, dan ilmu kedokteran. Mencapai puncak di bawah Ramses II.'
-            },
-            {
-                period: 'Masa Yunani-Romawi',
-                text: 'Alexander Agung menaklukkan Mesir tahun 332 SM, mendirikan Alexandria. Dinasti Ptolema memerintah hingga Cleopatra VII. Mesir menjadi provinsi Romawi tahun 30 SM.'
-            },
-            {
-                period: 'Masa Islam',
-                text: 'Arab Muslim menaklukkan Mesir tahun 641 M di bawah Amr bin Ash. Mesir menjadi pusat peradaban Islam dengan Dinasti Fatimiyah (Kairo didirikan 969), Ayyubiyah (Salahuddin Al-Ayyub), dan Mamluk.'
-            },
-            {
-                period: 'Masa Ottoman & Kolonial',
-                text: 'Ottoman menguasai Mesir 1517-1917. Muhammad Ali modernisasi Mesir abad 19. Inggris menduduki Mesir 1882 dan menjadikannya protektorat hingga setelah Perang Dunia II.'
-            },
-            {
-                period: 'Republik Modern',
-                text: '1952 Revolusi Mesir dipimpin Gerakan Perwira Bebas menggulingkan kerajaan. Gamal Abdel Nasser menjadi presiden, menasionalisasi Terusan Suez (1956). Mesir modern menghadapi tantangan politik dan ekonomi hingga era Presiden Abdel Fattah el-Sisi.'
-            }
+            { period: 'Mesir Kuno', text: 'Peradaban Mesir lahir sekitar 3100 SM ketika Firaun Menes menyatukan Mesir Hulu dan Hilir. Membangun piramida Giza (2500 SM).' },
+            { period: 'Masa Yunani-Romawi', text: 'Alexander Agung menaklukkan Mesir tahun 332 SM. Mesir menjadi provinsi Romawi tahun 30 SM.' },
+            { period: 'Masa Islam', text: 'Arab Muslim menaklukkan Mesir tahun 641 M. Mesir menjadi pusat peradaban Islam dengan Dinasti Fatimiyah dan Ayyubiyah.' },
+            { period: 'Masa Ottoman & Kolonial', text: 'Ottoman menguasai Mesir 1517-1917. Inggris menduduki Mesir 1882.' },
+            { period: 'Republik Modern', text: '1952 Revolusi Mesir menggulingkan kerajaan. Gamal Abdel Nasser menjadi presiden dan menasionalisasi Terusan Suez (1956).' }
         ],
         figures: [
-            { name: 'Tutankhamun', role: 'Firaun Muda', initials: 'T', bio: 'Firaun Dinasti ke-18 yang naik takhta usia 9 tahun. Makamnya ditemukan Howard Carter tahun 1922 dalam kondisi utuh, menjadi penemuan arkeologi terbesar abad 20.' },
-            { name: 'Cleopatra VII', role: 'Ratu Terakhir Mesir', initials: 'C', bio: 'Ratu Ptolemaik terakhir yang menguasai bahasa Mesir dan 8 bahasa lain. Bersekutu dengan Julius Caesar dan Marcus Antonius. Kematiannya menandai akhir Mesir kuno dan awal kekuasaan Romawi.' },
-            { name: 'Salahuddin Al-Ayyub', role: 'Sultan & Pembebas Yerusalem', initials: 'S', bio: 'Pendiri Dinasti Ayyubiyah yang merebut Yerusalem dari Tentara Salib tahun 1187. Dikenal sebagai ksatria ksatria yang adil bahkan oleh musuhnya dalam Perang Salib.' },
-            { name: 'Gamal Abdel Nasser', role: 'Presiden & Pemimpin Pan-Arab', initials: 'N', bio: 'Pemimpin Revolusi 1952 dan Presiden kedua Mesir (1956-1970). Tokoh Gerakan Non-Blok yang menasionalisasi Terusan Suez dan menjadi simbol nasionalisme Arab.' }
+            { name: 'Tutankhamun', role: 'Firaun Muda', initials: 'T', bio: 'Firaun Dinasti ke-18 yang makamnya ditemukan Howard Carter tahun 1922 dalam kondisi utuh.' },
+            { name: 'Cleopatra VII', role: 'Ratu Terakhir Mesir', initials: 'C', bio: 'Ratu Ptolemaik terakhir yang bersekutu dengan Julius Caesar dan Marcus Antonius.' },
+            { name: 'Salahuddin Al-Ayyub', role: 'Sultan & Pembebas Yerusalem', initials: 'S', bio: 'Pendiri Dinasti Ayyubiyah yang merebut Yerusalem dari Tentara Salib tahun 1187.' },
+            { name: 'Gamal Abdel Nasser', role: 'Presiden & Pemimpin Pan-Arab', initials: 'N', bio: 'Pemimpin Revolusi 1952 dan tokoh Gerakan Non-Blok.' }
         ]
     },
     {
@@ -1268,34 +1119,19 @@ const COUNTRIES = [
         name: 'Prancis',
         continent: 'eropa',
         emblem: '🗼',
-        preview: 'Pusat Pencerahan Eropa yang melahirkan revolusi demokrasi, hak asasi manusia, dan kebudayaan tinggi.',
+        preview: 'Pusat Pencerahan Eropa yang melahirkan revolusi demokrasi dan hak asasi manusia.',
         history: [
-            {
-                period: 'Galia & Franka',
-                text: 'Prancis modern berasal dari suku Kelt Galia yang ditaklukkan Julius Caesar (58-50 SM). Setelah Romawi runtuh, suku Franka di bawah Clovis I mendirikan kerajaan (481 M). Dinasti Karoling dengan Charlemagne menjadi kekuatan Eropa abad 8-9.'
-            },
-            {
-                period: 'Kerajaan Abad Pertengahan',
-                text: 'Dinasti Capet dan Valois memerintah Prancis. Perang Seratus Tahun (1337-1453) melawan Inggris dimenangkan berkat Jeanne d\'Arc. Prancis menjadi kerajaan terkuat di Eropa di bawah Louis XIV "Raja Matahari".'
-            },
-            {
-                period: 'Revolusi Prancis',
-                text: '14 Juli 1789, rakyat Paris menyerbu Penjara Bastille — awal Revolusi Prancis. Monarki digulingkan, Declaration of the Rights of Man (1789) lahir. Napoleon Bonaparte naik kekuasaan 1799, menaklukkan sebagian Eropa sebelum dikalahkan di Waterloo (1815).'
-            },
-            {
-                period: 'Abad 19-20',
-                text: 'Prancis mengalami pergolakan: Restorasi, Revolusi 1848, Komun Paris 1871, Perang Prancis-Prusia. Dua Perang Dunia menghancurkan Prancis; dijajah Jerman 1940-1944 sebelum dibebaskan Charles de Gaulle.'
-            },
-            {
-                period: 'Era Modern',
-                text: 'Republik Kelima didirikan de Gaulle tahun 1958. Prancis menjadi anggota pendiri Uni Eropa, kekuatan nuklir, dan pusat kebudayaan dunia. Paris tetap menjadi ibu kota mode, seni, dan diplomasi internasional.'
-            }
+            { period: 'Galia & Franka', text: 'Prancis modern berasal dari suku Kelt Galia yang ditaklukkan Julius Caesar. Charlemagne menjadi kekuatan Eropa abad 8-9.' },
+            { period: 'Kerajaan Abad Pertengahan', text: 'Perang Seratus Tahun (1337-1453) melawan Inggris dimenangkan berkat Jeanne d\'Arc. Prancis menjadi kerajaan terkuat di Eropa di bawah Louis XIV.' },
+            { period: 'Revolusi Prancis', text: '14 Juli 1789, rakyat Paris menyerbu Bastille. Napoleon Bonaparte naik kekuasaan 1799, menaklukkan sebagian Eropa.' },
+            { period: 'Abad 19-20', text: 'Prancis mengalami pergolakan: Restorasi, Revolusi 1848, Komun Paris 1871. Dijajah Jerman 1940-1944.' },
+            { period: 'Era Modern', text: 'Republik Kelima didirikan de Gaulle tahun 1958. Prancis menjadi anggota pendiri Uni Eropa.' }
         ],
         figures: [
-            { name: 'Charlemagne', role: 'Kaisar Romawi Suci', initials: 'C', bio: 'Raja Franka (768-814) yang menyatukan sebagian besar Eropa Barat. Dinobatkan Kaisar oleh Paus tahun 800. Bapak peradaban Eropa abad pertengahan.' },
-            { name: 'Jeanne d\'Arc', role: 'Pahlawan Nasional', initials: 'J', bio: 'Gadis petani yang mengklaim mendapat wahyu ilahi untuk membebaskan Prancis dari Inggris. Memimpin pasukan di usia 17, ditangkap dan dibakar hidup-hidup tahun 1431. Dikanonisasi 1920.' },
-            { name: 'Napoleon Bonaparte', role: 'Kaisar Prancis', initials: 'N', bio: 'Jenderal yang menjadi Kaisar (1804-1815). Kode Napoleon menjadi dasar hukum modern Eropa. Penakluk brilian yang akhirnya kalah di Waterloo dan diasingkan ke St. Helena.' },
-            { name: 'Charles de Gaulle', role: 'Pemimpin Prancis Bebas', initials: 'D', bio: 'Jenderal yang memimpin perlawanan terhadap Nazi dari London. Pendiri Republik Kelima (1958) dan presiden pertama. Arsitek kemerdekaan Prancis dan integrasi Eropa.' }
+            { name: 'Charlemagne', role: 'Kaisar Romawi Suci', initials: 'C', bio: 'Raja Franka (768-814) yang menyatukan sebagian besar Eropa Barat.' },
+            { name: 'Jeanne d\'Arc', role: 'Pahlawan Nasional', initials: 'J', bio: 'Gadis petani yang memimpin pasukan di usia 17, ditangkap dan dibakar hidup-hidup tahun 1431.' },
+            { name: 'Napoleon Bonaparte', role: 'Kaisar Prancis', initials: 'N', bio: 'Jenderal yang menjadi Kaisar (1804-1815). Kode Napoleon menjadi dasar hukum modern Eropa.' },
+            { name: 'Charles de Gaulle', role: 'Pemimpin Prancis Bebas', initials: 'D', bio: 'Jenderal yang memimpin perlawanan terhadap Nazi. Pendiri Republik Kelima (1958).' }
         ]
     },
     {
@@ -1303,34 +1139,19 @@ const COUNTRIES = [
         name: 'Brasil',
         continent: 'amerika',
         emblem: '🌴',
-        preview: 'Raksasa Amerika Latin yang lahir dari kolonialisme Portugis dan menjadi negara terbesar di belahan bumi selatan.',
+        preview: 'Raksasa Amerika Latin yang lahir dari kolonialisme Portugis.',
         history: [
-            {
-                period: 'Penduduk Asli',
-                text: 'Sebelum kedatangan Eropa, Brasil dihuni oleh jutaan penduduk asli dari ratusan suku seperti Tupi, Guarani, dan Yanomami dengan kebudayaan yang beragam.'
-            },
-            {
-                period: 'Kolonialisme Portugis',
-                text: 'Pedro Álvares Cabral mendarat tahun 1500. Portugis mendirikan koloni, menanam tebu, dan mengimpor jutaan budak Afrika (4 juta orang, terbanyak di Amerika). Periode ini membentuk demografi dan budaya Brasil modern.'
-            },
-            {
-                period: 'Kemerdekaan Damai',
-                text: '1808 keluarga kerajaan Portugis lari ke Brasil dari Napoleon. 1822 Pangeran Pedro memproklamasikan kemerdekaan (7 September) dan menjadi Kaisar Pedro I. Brasil satu-satunya negara Amerika Latin yang merdeka melalui monarki, bukan revolusi berdarah.'
-            },
-            {
-                period: 'Republik & Abolisi',
-                text: '1889 kudeta militer mendirikan republik. 1888 Brasil menjadi negara terakhir di Amerika yang menghapus perbudakan (Lei Áurea). Imigrasi besar dari Italia, Jerman, Jepang mengubah wajah Brasil.'
-            },
-            {
-                period: 'Era Modern',
-                text: 'Abad 20 diwarnai kediktatoran Vargas (1930-45, 1964-85) dan demokrasi. Brasil kini negara terbesar ke-5 di dunia, kekuatan ekonomi BRICS, terkenal dengan karnaval, sepak bola, dan Hutan Amazon — paru-paru dunia.'
-            }
+            { period: 'Penduduk Asli', text: 'Brasil dihuni oleh jutaan penduduk asli dari ratusan suku seperti Tupi, Guarani, dan Yanomami.' },
+            { period: 'Kolonialisme Portugis', text: 'Pedro Álvares Cabral mendarat tahun 1500. Portugis mengimpor jutaan budak Afrika.' },
+            { period: 'Kemerdekaan Damai', text: '1822 Pangeran Pedro memproklamasikan kemerdekaan (7 September) dan menjadi Kaisar Pedro I.' },
+            { period: 'Republik & Abolisi', text: '1889 kudeta militer mendirikan republik. 1888 Brasil menghapus perbudakan (Lei Áurea).' },
+            { period: 'Era Modern', text: 'Brasil kini negara terbesar ke-5 di dunia, kekuatan ekonomi BRICS, terkenal dengan karnaval dan Hutan Amazon.' }
         ],
         figures: [
-            { name: 'Dom Pedro I', role: 'Proklamator Kemerdekaan', initials: 'P', bio: 'Pangeran Portugis yang memproklamasikan kemerdekaan Brasil 7 September 1822 dengan seruan terkenal "Independência ou Morte!" di tepi Sungai Ipiranga.' },
-            { name: 'Tiradentes', role: 'Martir Kemerdekaan', initials: 'T', bio: 'Pemimpin Inconfidência Mineira (1789), gerakan kemerdekaan awal. Dieksekusi 1792 dan menjadi simbol perjuangan kemerdekaan Brasil.' },
-            { name: 'Princesa Isabel', role: 'Pembebas Budak', initials: 'I', bio: 'Putri Mahkota yang menandatangani Lei Áurea (Hukum Emas) 13 Mei 1888, menghapus perbudakan di Brasil setelah 300 tahun.' },
-            { name: 'Getúlio Vargas', role: 'Bapak Brasil Modern', initials: 'G', bio: 'Presiden 1930-45 dan 1951-54. Modernisasi industri, hak buruh, dan negara kesejahteraan. Sosok kontroversial yang memadukan populisme dan otoritarianisme.' }
+            { name: 'Dom Pedro I', role: 'Proklamator Kemerdekaan', initials: 'P', bio: 'Pangeran Portugis yang memproklamasikan kemerdekaan Brasil 7 September 1822.' },
+            { name: 'Tiradentes', role: 'Martir Kemerdekaan', initials: 'T', bio: 'Pemimpin Inconfidência Mineira (1789), gerakan kemerdekaan awal.' },
+            { name: 'Princesa Isabel', role: 'Pembebas Budak', initials: 'I', bio: 'Putri Mahkota yang menandatangani Lei Áurea 13 Mei 1888.' },
+            { name: 'Getúlio Vargas', role: 'Bapak Brasil Modern', initials: 'G', bio: 'Presiden 1930-45 dan 1951-54. Modernisasi industri dan hak buruh.' }
         ]
     },
     {
@@ -1338,34 +1159,19 @@ const COUNTRIES = [
         name: 'India',
         continent: 'asia',
         emblem: '🕌',
-        preview: 'Subbenua dengan peradaban 5000 tahun, tempat lahirnya Hindu, Buddha, dan gerakan kemerdekaan damai terbesar abad 20.',
+        preview: 'Subbenua dengan peradaban 5000 tahun, tempat lahirnya Hindu dan Buddha.',
         history: [
-            {
-                period: 'Peradaban Lembah Indus',
-                text: 'Peradaban Harappa dan Mohenjo-Daro (2600-1900 SM) menjadi salah satu peradaban tertua dunia dengan tata kota canggih. Disusul periode Weda dan lahirnya Hindu.'
-            },
-            {
-                period: 'Kerajaan Kuno',
-                text: 'Kerajaan Magadha, Maurya (dengan Ashoka Agung yang menyebarkan Buddha), Gupta (zaman keemasan India), Chola di selatan. Lahirnya Buddha dan Mahavira (Jainisme) pada abad 6 SM.'
-            },
-            {
-                period: 'Kesultanan Delhi & Mughal',
-                text: 'Islam masuk abad 8, Kesultanan Delhi (1206-1526), lalu Kekaisaran Mughal (1526-1857). Akbar Agung menyatukan India, Shah Jahan membangun Taj Mahal. India menjadi salah satu ekonomi terbesar dunia.'
-            },
-            {
-                period: 'Kolonialisme Inggris',
-                text: 'British East India Company masuk abad 17, menguasai India setelah Pertempuran Plassey (1757). Setelah Pemberontakan 1857, Inggris memerintah langsung (British Raj). India menjadi "mutiara mahkota" Inggris.'
-            },
-            {
-                period: 'Kemerdekaan & Modern',
-                text: 'Gerakan kemerdekaan dipimpin Mahatma Gandhi dengan satyagraha (perlawanan tanpa kekerasan). 15 Agustus 1947 India merdeka namun terpecah menjadi India dan Pakistan. Kini India demokrasi terbesar dunia dengan 1,4 miliar penduduk dan kekuatan teknologi global.'
-            }
+            { period: 'Peradaban Lembah Indus', text: 'Peradaban Harappa dan Mohenjo-Daro (2600-1900 SM) menjadi salah satu peradaban tertua dunia.' },
+            { period: 'Kerajaan Kuno', text: 'Kerajaan Maurya (dengan Ashoka Agung), Gupta (zaman keemasan India). Lahirnya Buddha dan Mahavira.' },
+            { period: 'Kesultanan Delhi & Mughal', text: 'Kesultanan Delhi (1206-1526), lalu Kekaisaran Mughal (1526-1857). Akbar Agung menyatukan India, Shah Jahan membangun Taj Mahal.' },
+            { period: 'Kolonialisme Inggris', text: 'British East India Company menguasai India setelah Pertempuran Plassey (1757). Setelah Pemberontakan 1857, Inggris memerintah langsung.' },
+            { period: 'Kemerdekaan & Modern', text: 'Gerakan kemerdekaan dipimpin Mahatma Gandhi dengan satyagraha. 15 Agustus 1947 India merdeka. Kini India demokrasi terbesar dunia.' }
         ],
         figures: [
-            { name: 'Ashoka Agung', role: 'Kaisar Maurya', initials: 'A', bio: 'Kaisar yang menyatukan hampir seluruh India (268-232 SM). Setelah pertumpahan darah di Kalinga, ia memeluk Buddha dan menyebarkan perdamaian ke seluruh Asia.' },
-            { name: 'Akbar Agung', role: 'Kaisar Mughal', initials: 'K', bio: 'Kaisar Mughal (1556-1605) yang memperluas kekaisaran dan terkenal karena toleransi beragama. Menyatukan India Hindu-Muslim dalam administrasi yang adil.' },
-            { name: 'Mahatma Gandhi', role: 'Bapak Bangsa India', initials: 'G', bio: 'Pemimpin gerakan kemerdekaan dengan ahimsa (non-kekerasan) dan satyagraha. Menginspirasi Martin Luther King Jr. dan Nelson Mandela. Terbunuh 30 Januari 1948.' },
-            { name: 'Jawaharlal Nehru', role: 'Perdana Menteri Pertama', initials: 'N', bio: 'Murid Gandhi dan PM pertama India (1947-1964). Arsitek India modern, sekuler, dan demokratis. Tokoh pendiri Gerakan Non-Blok.' }
+            { name: 'Ashoka Agung', role: 'Kaisar Maurya', initials: 'A', bio: 'Kaisar yang menyatukan hampir seluruh India (268-232 SM). Setelah pertumpahan darah, ia memeluk Buddha.' },
+            { name: 'Akbar Agung', role: 'Kaisar Mughal', initials: 'K', bio: 'Kaisar Mughal (1556-1605) yang terkenal karena toleransi beragama.' },
+            { name: 'Mahatma Gandhi', role: 'Bapak Bangsa India', initials: 'G', bio: 'Pemimpin gerakan kemerdekaan dengan ahimsa (non-kekerasan). Terbunuh 30 Januari 1948.' },
+            { name: 'Jawaharlal Nehru', role: 'Perdana Menteri Pertama', initials: 'N', bio: 'Murid Gandhi dan PM pertama India (1947-1964). Arsitek India modern.' }
         ]
     },
     {
@@ -1373,34 +1179,201 @@ const COUNTRIES = [
         name: 'Australia',
         continent: 'oceania',
         emblem: '🦘',
-        preview: 'Benua sekaligus negara dengan warisan Aborigin 65.000 tahun dan sejarah kolonial Inggris yang unik.',
+        preview: 'Benua sekaligus negara dengan warisan Aborigin 65.000 tahun.',
         history: [
-            {
-                period: 'Penduduk Aborigin',
-                text: 'Aborigin dan Torres Strait Islander telah menghuni Australia selama 65.000 tahun — salah satu kebudayaan tertua yang masih bertahan. Dreamtime, seni cadas, dan hubungan spiritual dengan tanah menjadi inti kebudayaan.'
-            },
-            {
-                period: 'Penjelajahan Eropa',
-                text: 'Belanda (Willem Janszoon, 1606) dan Abel Tasman (1642) menjelajahi pesisir. James Cook (Inggris) memetakan pantai timur 1770 dan mengklaimnya untuk Inggris, menamai New South Wales.'
-            },
-            {
-                period: 'Kolonial & Koloni Narapidana',
-                text: '1788 First Fleet membawa narapidana Inggris mendirikan Sydney. Selama 80 tahun, 162.000 narapidana dideportasi. Koloni-koloni lain berdiri: Tasmania, Victoria, Queensland, Australia Selatan, Australia Barat.'
-            },
-            {
-                period: 'Federasi & Perang Dunia',
-                text: '1 Januari 1901 enam koloni bersatu menjadi Commonwealth of Australia. Berperang di Gallipoli (1915) yang melahirkan ANZAC legend. Berperang di PD I dan PD II, termasuk pertempuran Kokoda melawan Jepang.'
-            },
-            {
-                period: 'Era Modern',
-                text: 'Australia menjadi negara multikultural setelah abolisi White Australia Policy (1970-an). 1999 referendum menolak menjadi republik. Kini negara maju dengan ekonomi kuat, demokrasi stabil, dan terus berdamai dengan masa lalu Aborigin melalui rekonsiliasi.'
-            }
+            { period: 'Penduduk Aborigin', text: 'Aborigin telah menghuni Australia selama 65.000 tahun — salah satu kebudayaan tertua yang masih bertahan.' },
+            { period: 'Penjelajahan Eropa', text: 'Belanda (1606) dan James Cook (Inggris, 1770) memetakan pesisir Australia.' },
+            { period: 'Kolonial & Koloni Narapidana', text: '1788 First Fleet membawa narapidana Inggris mendirikan Sydney. Selama 80 tahun, 162.000 narapidana dideportasi.' },
+            { period: 'Federasi & Perang Dunia', text: '1 Januari 1901 enam koloni bersatu menjadi Commonwealth of Australia. Berperang di Gallipoli (1915).' },
+            { period: 'Era Modern', text: 'Australia menjadi negara multikultural setelah abolisi White Australia Policy (1970-an).' }
         ],
         figures: [
-            { name: 'Captain James Cook', role: 'Penjelajah Inggris', initials: 'J', bio: 'Kapten Inggris yang memetakan pantai timur Australia 1770 dan mengklaimnya untuk Kerajaan Inggris. Pelayarannya mengubah peta dunia.' },
-            { name: 'Ned Kelly', role: 'Bandit Legendaris', initials: 'N', bio: 'Penjahat Australia paling terkenal (1855-1880). Dianggap pahlawan rakyat oleh sebagian orang yang menentang polisi Inggris. Simbol perlawanan kelas pekerja.' },
-            { name: 'Sir Robert Menzies', role: 'PM Terlama', initials: 'R', bio: 'Perdana Menteri terlama Australia (18 periode, 1939-41 & 1949-66). Pendiri Partai Liberal dan arsitek Australia pasca-perang.' },
-            { name: 'Gough Whitlam', role: 'PM Reformis', initials: 'W', bio: 'PM ke-21 (1972-75) yang mengakhiri White Australia Policy, mengakui Tiongkok, dan memperkenalkan Medicare. Pemecatan kontroversialnya 1975 menjadi krisis konstitusional.' }
+            { name: 'Captain James Cook', role: 'Penjelajah Inggris', initials: 'J', bio: 'Kapten Inggris yang memetakan pantai timur Australia 1770.' },
+            { name: 'Ned Kelly', role: 'Bandit Legendaris', initials: 'N', bio: 'Penjahat Australia paling terkenal (1855-1880). Simbol perlawanan kelas pekerja.' },
+            { name: 'Sir Robert Menzies', role: 'PM Terlama', initials: 'R', bio: 'Perdana Menteri terlama Australia. Pendiri Partai Liberal.' },
+            { name: 'Gough Whitlam', role: 'PM Reformis', initials: 'W', bio: 'PM ke-21 (1972-75) yang mengakhiri White Australia Policy.' }
+        ]
+    },
+
+    /* ===== 9 NEGARA ASEAN TAMBAHAN ===== */
+    {
+        id: 'malaysia',
+        name: 'Malaysia',
+        continent: 'asia',
+        emblem: '🌺',
+        preview: 'Negara federasi multi-etnis di jantung Asia Tenggara dengan warisan Kesultanan Melayu yang gemilang.',
+        history: [
+            { period: 'Kerajaan Melayu Kuno', text: 'Kerajaan Melayu kuno seperti Srivijaya (abad ke-7) berpusat di Sumatera namun menguasai Semenanjung Malaya. Kesultanan Malaka (1400-1511) menjadi pusat perdagangan rempah dan penyebaran Islam di Nusantara, menarik pedagang dari Tiongkok, India, Arab, dan Eropa.' },
+            { period: 'Kolonialisme Eropa', text: 'Portugis menaklukkan Malaka tahun 1511, disusul Belanda (1641). Inggris mulai berkuasa melalui Perjanjian Anglo-Belanda 1824 dan menguasai seluruh Semenanjung Malaya. Sabah dan Sarawak menjadi protektorat Inggris melalui keluarga Brooke dan Perusahaan Borneo Utara Inggris.' },
+            { period: 'Pendudukan Jepang', text: 'Jepang menduduki Malaya dan Borneo Utara tahun 1941-1945. Masa pendudukan yang kejam membangkitkan semangat nasionalisme dan kesadaran bahwa penjajah Eropa bisa dikalahkan.' },
+            { period: 'Perjuangan Kemerdekaan', text: 'Setelah perang, Inggris kembali namun menghadapi perlawanan seperti Darurat Malaya (1948-1960) oleh Partai Komunis Malaya. Tunku Abdul Rahman memimpin negosiasi kemerdekaan. 31 Agustus 1957, Federasi Malaya merdeka dari Inggris.' },
+            { period: 'Pembentukan Malaysia & Era Modern', text: '16 September 1963, Malaya bergabung dengan Singapura, Sabah, dan Sarawak membentuk Malaysia (Singapura keluar 1965). Di bawah PM Mahathir Mohamad (1981-2003), Malaysia bertransformasi dari negara agraris menjadi negara industri maju dengan visi Wawasan 2020.' }
+        ],
+        figures: [
+            { name: 'Tunku Abdul Rahman', role: 'Bapak Kemerdekaan', initials: 'T', bio: 'Perdana Menteri pertama Malaysia (1957-1970). Pemimpin negosiasi kemerdekaan dari Inggris dan arsitek awal pembentukan Malaysia. Dikenal sebagai "Bapak Kemerdekaan" (Bapa Kemerdekaan).' },
+            { name: 'Tun Dr. Mahathir Mohamad', role: 'Bapak Modernisasi Malaysia', initials: 'M', bio: 'Perdana Menteri terlama (1981-2003, 2018-2020). Mengubah Malaysia dari negara agraris menjadi kekuatan industri Asia. Pembangun Menara Kembar Petronas dan proyek Vision 2020.' },
+            { name: 'Tuanku Abdul Rahman', role: 'Yang di-Pertuan Agong Pertama', initials: 'A', bio: 'Yang di-Pertuan Agong (Raja) pertama Malaysia (1957-1960). Sultan Negeri Sembilan yang menjadi simbol persatuan monarki konstitusional Malaysia.' },
+            { name: 'Datuk Onn Jaafar', role: 'Pendiri UMNO', initials: 'O', bio: 'Pendiri United Malays National Organisation (UMNO) tahun 1946. Memimpin perlawanan terhadap Malayan Union yang dianggap merugikan hak Melayu.' }
+        ]
+    },
+    {
+        id: 'singapura',
+        name: 'Singapura',
+        continent: 'asia',
+        emblem: '🦁',
+        preview: 'Kota-negara kecil yang bertransformasi dari pelabuhan koloni menjadi salah satu pusat keuangan dunia.',
+        history: [
+            { period: 'Temasek & Kerajaan Melayu', text: 'Singapura kuno dikenal sebagai Temasek ("Kota Laut"). Menurut legenda, Sang Nila Utama dari Palembang menamainya "Singapura" (Kota Singa) tahun 1299. Menjadi bagian dari Kesultanan Melayu sebelum dihancurkan perang pada abad ke-17.' },
+            { period: 'Kolonialisme Inggris', text: '1829, Sir Stamford Raffles dari British East India Company mendirikan pos perdagangan di Singapura. Berkat posisi strategis di Selat Malaka, Singapura tumbuh pesat menjadi pelabuhan bebas dan pusat perdagangan. Menjadi Koloni Mahkota Inggris tahun 1867.' },
+            { period: 'Pendudukan Jepang', text: 'Februari 1942, Inggris menyerah kepada Jepang di Singapura — "bencana terburuk dalam sejarah militer Inggris". Jepang menamainya Syonan-to ("Cahaya Selatan"). Masa pendudukan yang kejam, termasuk pembantaian Sook Ching terhadap etnis Tionghoa.' },
+            { period: 'Merger & Kemerdekaan', text: '1959 Singapura memperoleh pemerintahan sendiri dengan Lee Kuan Yew sebagai PM pertama. 1963 bergabung dengan Federasi Malaysia, namun perbedaan politik dan etnis menyebabkan ketegangan. 9 Agustus 1965, Singapura merdeka sebagai negara berdaulat — kemerdekaan yang tidak direncanakan.' },
+            { period: 'Era Modern', text: 'Di bawah Lee Kuan Yew (1959-1990), Singapura bertransformasi dari negara berkembang tanpa sumber daya alam menjadi salah satu negara terkaya dunia. Pusat keuangan, pelabuhan tersibuk, dan model pembangunan Asia. Kini dipimpin PM Lawrence Wong (2024-sekarang).' }
+        ],
+        figures: [
+            { name: 'Sir Stamford Raffles', role: 'Pendiri Singapura Modern', initials: 'R', bio: 'Negarawan Inggris yang mendirikan Singapura sebagai pos perdagangan tahun 1819. Visinya menjadikan Singapura pelabuhan bebas mengubah sejarah Asia Tenggara.' },
+            { name: 'Lee Kuan Yew', role: 'Bapak Pendiri Singapura', initials: 'L', bio: 'Perdana Menteri pertama (1959-1990) dan arsitek transformasi Singapura. Dikenal sebagai salah satu pemimpin paling visioner abad 20, mengubah negara kecil tanpa sumber daya menjadi macan Asia.' },
+            { name: 'Dr. Goh Keng Swee', role: 'Arsitek Ekonomi', initials: 'G', bio: 'Wakil PM dan menteri keuangan yang merancang kebijakan ekonomi Singapura. Otak di balik transformasi ekonomi dan sistem pendidikan yang menjadi model dunia.' },
+            { name: 'Encik Yusof bin Ishak', role: 'Presiden Pertama', initials: 'Y', bio: 'Presiden pertama Singapura (1965-1970). Pemimpin yang menyatukan bangsa di masa-masa awal kemerdekaan yang penuh tantangan.' }
+        ]
+    },
+    {
+        id: 'thailand',
+        name: 'Thailand',
+        continent: 'asia',
+        emblem: '🐘',
+        preview: 'Satu-satunya negara Asia Tenggara yang tidak pernah dijajah, dikenal sebagai Negeri Gajah Putih.',
+        history: [
+            { period: 'Kerajaan Kuno', text: 'Kerajaan Sukhothai (1238-1438) dianggap sebagai kerajaan Thai pertama. Ayutthaya (1351-1767) menjadi kerajaan besar yang menguasai Asia Tenggara daratan selama 417 tahun, menjalin hubungan dagang dengan Tiongkok, India, dan Eropa.' },
+            { period: 'Kerajaan Thonburi & Rattanakosin', text: 'Setelah Ayutthaya dihancurkan Burma 1767, Jenderal Taksin mendirikan Thonburi (1767-1782). Raja Rama I mendirikan Dinasti Chakri dan Bangkok sebagai ibu kota tahun 1782 — dinasti yang masih memerintah hingga kini.' },
+            { period: 'Diplomasi Bambu: Menghindari Kolonialisme', text: 'Thailand satu-satunya negara Asia Tenggara yang tidak dijajah Eropa. Berkat diplomasi cerdas Raja Rama IV (Mongkut) dan Rama V (Chulalongkorn) yang memodernisasi negara, melakukan reformasi, dan bermain di antara Inggris dan Prancis sebagai negara penyangga (buffer state).' },
+            { period: 'Revolusi 1932 & Abad 20', text: 'Revolusi 1932 mengakhiri monarki absolut, mengubah Thailand menjadi monarki konstitusional. Nama berubah dari Siam menjadi Thailand (1939). Pendudukan Jepang 1941-1945 dengan gerakan Seri Thai (Thai Merdeka) yang melawan secara diam-diam.' },
+            { period: 'Era Modern', text: 'Perang Dingin menjadikan Thailand sekutu AS. Berganti-ganti antara pemerintahan sipil dan militer. Kudeta militer terakhir 2014. Kini Thailand di bawah Raja Rama X (Vajiralongkorn) sejak 2016, tetap menjadi pusat pariwisata dan ekonomi ASEAN.' }
+        ],
+        figures: [
+            { name: 'Raja Rama V (Chulalongkorn)', role: 'Modernisator Thailand', initials: 'R', bio: 'Raja ke-5 Dinasti Chakri (1868-1910). Menghapus perbudakan, memodernisasi administrasi, militer, dan pendidikan. Berjasa menyelamatkan Thailand dari kolonialisme melalui diplomasi cerdas.' },
+            { name: 'Raja Rama IV (Mongkut)', role: 'Bapak Sains Thailand', initials: 'M', bio: 'Raja ke-4 (1851-1868). Membuka Thailand ke dunia Barat, memodernisasi negara, dan menjadi inspirasi cerita "Anna and the King".' },
+            { name: 'Raja Taksin', role: 'Pembebas Thailand', initials: 'T', bio: 'Jenderal yang mengusir invasi Burma dan mendirikan Kerajaan Thonburi (1767). Menyatukan kembali Thailand yang terpecah setelah kejatuhan Ayutthaya.' },
+            { name: 'Pridi Banomyong', role: 'Pemimpin Revolusi 1932', initials: 'P', bio: 'Pemimpin Partai Rakyat yang melakukan revolusi 1932 mengubah Thailand dari monarki absolut menjadi konstitusional. Arsitek konstitusi pertama Thailand.' }
+        ]
+    },
+    {
+        id: 'filipina',
+        name: 'Filipina',
+        continent: 'asia',
+        emblem: '🌴',
+        preview: 'Satu-satunya negara Kristen di Asia yang lahir dari perpaduan budaya Melayu, Spanyol, dan Amerika.',
+        history: [
+            { period: 'Peradaban Pra-Kolonial', text: 'Sebelum kedatangan Eropa, Filipina terdiri dari barangay (desa) yang dipimpin datu. Peradaban maritim maju dengan hubungan dagang ke Tiongkok, India, dan Nusantara. Kerajaan Tondo, Maynila, Cebu, dan Sulu menjadi pusat perdagangan.' },
+            { period: 'Kolonialisme Spanyol (1565-1898)', text: 'Miguel López de Legazpi tiba tahun 1565. Spanyol menjajah selama 333 tahun, menyebarkan Katolik, dan menamai kepulauan dari Raja Philip II. Perlawanan muncul dari Diego Silang, Gabriela Silang, dan pemberontakan Dagohoy (pemberontakan terpanjang, 85 tahun).' },
+            { period: 'Pergerakan Nasional', text: 'Abad 19 lahir gerakan reformasi dipimpin José Rizal (penulis Noli Me Tangere), Marcelo H. del Pilar, dan Graciano López Jaena. 1896, Andrés Bonifacio mendirikan Katipunan dan memulai revolusi. 12 Juni 1898, Emilio Aguinaldo memproklamasikan kemerdekaan.' },
+            { period: 'Kolonialisme Amerika & Jepang', text: 'Spanyol menyerahkan Filipina ke AS tahun 1898 (Perjanjian Paris). Perang Filipina-AS (1899-1902). Jepang menduduki 1942-1945, diwarnai Pertempuran Manila yang menghancurkan dan Bataan Death March.' },
+            { period: 'Kemerdekaan & Era Modern', text: '4 Juli 1946 AS mengakui kemerdekaan Filipina. Era Marcos (1965-1986) dengan hukum martil, digulingkan People Power Revolution 1986 yang dipimpin Corazon Aquino. Kini demokrasi terbesar ke-2 di Asia dengan 110+ juta penduduk.' }
+        ],
+        figures: [
+            { name: 'José Rizal', role: 'Pahlawan Nasional', initials: 'J', bio: 'Penulis Noli Me Tangere dan El Filibusterismo yang membangkitkan nasionalisme Filipina. Dieksekusi Spanyol 30 Desember 1896 di Bagumbayan. Kematiananya memicu revolusi.' },
+            { name: 'Andrés Bonifacio', role: 'Bapak Revolusi Filipina', initials: 'A', bio: 'Pendiri Katipunan (1892), organisasi rahasia revolusioner. Memulai revolusi bersenjata melawan Spanyol. Dianggap "Bapak Revolusi Filipina".' },
+            { name: 'Emilio Aguinaldo', role: 'Presiden Pertama', initials: 'E', bio: 'Pemimpin revolusi dan Presiden pertama Republik Filipina (1899). Memproklamasikan kemerdekaan 12 Juni 1898 yang kini diperingati sebagai Hari Kemerdekaan.' },
+            { name: 'Corazon Aquino', role: 'Ibu Demokrasi', initials: 'C', bio: 'Presiden ke-11 (1986-1992) yang memimpin People Power Revolution 1986 menggulingkan kediktatoran Marcos. Simbol demokrasi dan kekuatan rakyat.' }
+        ]
+    },
+    {
+        id: 'vietnam',
+        continent: 'asia',
+        name: 'Vietnam',
+        emblem: '🐉',
+        preview: 'Negeri Naga Biru yang bangkit dari perang berkepanjangan menjadi salah satu ekonomi tercepat di Asia.',
+        history: [
+            { period: 'Vietnam Kuno', text: 'Peradaban Đông Sơn (700 SM-100 M) dengan budaya perunggu Dong Son terkenal. Kerajaan Âu Lạc dan Nam Việt. Seribu tahun di bawah dominasi Tiongkok (111 SM-938 M) membentuk budaya Vietnam yang unik — memadukan pengaruh Tiongkok dengan identitas asli.' },
+            { period: 'Kerajaan Merdeka', text: '938 M, Ngô Quyền mengalahkan Tiongkok di Pertempuran Bạch Đằng, mengawali era kemerdekaan. Dinasti Lý, Trần, Lê, dan Nguyễn. Vietnam mengalahkan tiga invasi Mongol (abad 13). Perluasan ke selatan (Nam Tiến) menyerap Champa dan Khmer Krom.' },
+            { period: 'Kolonialisme Prancis', text: 'Prancis menaklukkan Vietnam bertahap (1858-1885), menjadikannya bagian Indochina Prancis. Perlawanan muncul dari gerakan Cần Vương dan kemudian Partai Komunis Indochina yang didirikan Ho Chi Minh tahun 1930.' },
+            { period: 'Perang Indochina & Vietnam', text: '2 September 1945 Ho Chi Minh memproklamasikan kemerdekaan. Perang Indochina Pertama (1946-1954) diakhiri kemenangan Vietnam di Dien Bien Phu. Perjanjian Jenewa membagi Vietnam Utara-Selatan. Perang Vietnam (1955-1975) melawan AS berakhir dengan reunifikasi 30 April 1975.' },
+            { period: 'Era Modern', text: 'Reunifikasi resmi 1976 sebagai Republik Sosialis Vietnam. Perang Kamboja (1978-1989) dan isolasi internasional. Reformasi Đổi Mới (1986) membuka ekonomi. Kini salah satu ekonomi tercepat di Asia dengan 100 juta penduduk, anggota WTO, dan mitra strategis banyak negara.' }
+        ],
+        figures: [
+            { name: 'Ho Chi Minh', role: 'Bapak Bangsa Vietnam', initials: 'H', bio: 'Pemimpin revolusioner yang mendirikan Partai Komunis Indochina dan Viet Minh. Memproklamasikan kemerdekaan Vietnam 2 September 1945. Presiden pertama Vietnam (1945-1969). Simbol perjuangan kemerdekaan.' },
+            { name: 'Võ Nguyên Giáp', role: 'Jenius Militer', initials: 'V', bio: 'Jenderal yang mengalahkan Prancis di Dien Bien Phu (1954) dan memimpin perang melawan AS. Dianggap salah satu strategist militer terbesar abad 20.' },
+            { name: 'Ngô Quyền', role: 'Pembebas dari Tiongkok', initials: 'N', bio: 'Jenderal yang mengalahkan Tiongkok di Pertempuran Bạch Đằng tahun 938 M, mengakhiri 1000 tahun dominasi Tiongkok dan mengawali era kemerdekaan Vietnam.' },
+            { name: 'Trần Hưng Đạo', role: 'Pahlawan Anti-Mongol', initials: 'T', bio: 'Jenderal Dinasti Trần yang tiga kali mengalahkan invasi Mongol (1258, 1285, 1288). Penulis karya militer Hịch Tướng Sĩ. Pahlawan nasional yang diagungkan sebagai Đức Thánh Trần.' }
+        ]
+    },
+    {
+        id: 'myanmar',
+        name: 'Myanmar',
+        continent: 'asia',
+        emblem: '🏯',
+        preview: 'Negeri Emas dengan kerajaan Buddha kuno yang mengalami perjalanan politik penuh gejolak.',
+        history: [
+            { period: 'Kerajaan Kuno', text: 'Peradaban Pyu (200 SM-900 M) menjadi peradaban awal. Kerajaan Pagan (849-1297) di bawah Raja Anawrahta menyatukan lembah Irrawaddy dan menyebarkan Buddha Theravada. Membangun ribuan kuil di Pagan yang masih berdiri hingga kini.' },
+            { period: 'Kerajaan Taungoo & Konbaung', text: 'Dinasti Taungoo (1510-1752) di bawah Bayinnaung menciptakan kekaisaran terbesar di Asia Tenggara. Dinasti Konbaung (1752-1885) menjadi dinasti terakhir, berperang dengan Tiongkok (Qing) dan Siam (Thailand).' },
+            { period: 'Kolonialisme Inggris', text: 'Tiga Perang Anglo-Burma (1824-1885) mengakhiri kemerdekaan Burma. Inggris menjadikan Burma provinsi India Britania (1886-1937), kemudian koloni terpisah. Eksploitasi sumber daya dan imigrasi massal dari India mengubah demografi.' },
+            { period: 'Perang Dunia & Kemerdekaan', text: 'Jepang menduduki 1942-1945, awalnya disambut sebagai pembebas namun ternyata kejam. Aung San memimpin Liga Anti-Fasis Rakyat (AFPFL). 4 Januari 1948 Burma merdeka dari Inggris, namun Aung San dibunuh 19 Juli 1947 sebelum kemerdekaan.' },
+            { period: 'Era Militer & Modern', text: 'Kudeta militer 1962 di bawah Ne Win mengisolasi Burma. Pemberontakan 8888 (1988) dan kemenangan Aung San Suu Kyi dalam pemilu 1990 tidak diakui junta. Transisi demokratis 2011-2021, namun kudeta militer kembali Februari 2021 menggulingkan pemerintah sipil.' }
+        ],
+        figures: [
+            { name: 'Aung San', role: 'Bapak Kemerdekaan', initials: 'A', bio: 'Pemimpin perjuangan kemerdekaan dan pendiri Tatmadaw (militer). Menegosiasikan Perjanjian Panglong 1947 dengan kelompok etnis. Dibunuh 19 Juli 1947, enam bulan sebelum kemerdekaan.' },
+            { name: 'Aung San Suu Kyi', role: 'Simbol Demokrasi', initials: 'S', bio: 'Putri Aung San, pemenang Nobel Perdamaian 1991. Dipenjara rumah selama 15 tahun oleh junta. Menjadi State Counsellor (2016-2021) sebelum digulingkan kudeta 2021.' },
+            { name: 'U Thant', role: 'Sekjen PBB Ketiga', initials: 'U', bio: 'Sekretaris Jenderal PBB (1961-1971), orang Asia pertama yang memegang jabatan ini. Memimpin PBB melalui Krisis Rudal Kuba dan perang di Vietnam.' },
+            { name: 'Raja Anawrahta', role: 'Pendiri Pagan', initials: 'A', bio: 'Raja pertama Kerajaan Pagan (1044-1077). Menyebarkan Buddha Theravada dan membangun fondasi budaya Burma. Dianggap bapak bangsa Burma.' }
+        ]
+    },
+    {
+        id: 'laos',
+        name: 'Laos',
+        continent: 'asia',
+        emblem: '🐂',
+        preview: 'Satu-satunya negara Asia Tenggara yang terkurung daratan, dikenal sebagai Negeri Gajah Sejuta.',
+        history: [
+            { period: 'Kerajaan Lan Xang', text: 'Kerajaan Lan Xang ("Negeri Sejuta Gajah") didirikan Fa Ngum tahun 1353, menjadi salah satu kerajaan terbesar di Asia Tenggara. Mencapai puncak di bawah Raja Sourigna Vongsa (1637-1694). Setelah kematiannya, kerajaan terpecah menjadi Luang Prabang, Vientiane, dan Champasak.' },
+            { period: 'Protektorat Prancis', text: '1893, Prancis menjadikan Laos protektorat sebagai bagian Indochina Prancis. Ketiga kerajaan disatukan kembali. Prancis membangun administrasi kolonial namun Laos tetap miskin dan terpinggirkan dibanding Vietnam dan Kamboja.' },
+            { period: 'Perang Dunia & Perang Indochina', text: 'Jepang menduduki 1940-1945. 1945 Laos merdeka singkat di bawah Phetsarath sebelum Prancis kembali. Perang Indochina Pertama (1946-1954) berakhir dengan kemerdekaan diakui. Laos terseret Perang Vietnam — menjadi negara yang paling banyak dibom per kapita dalam sejarah.' },
+            { period: 'Perang Saudara & Pathet Lao', text: 'Perang Saudara Laos (1959-1975) melibatkan kerajaan, Pathet Lao komunis, AS, dan Vietnam Utara. Jalur Ho Chi Minh melewati Laos. 2 Desember 1975, Pathet Lao menggulingkan monarki dan mendirikan Republik Demokratik Rakyat Laos.' },
+            { period: 'Era Modern', text: 'Awalnya bergantung pada Uni Soviet dan Vietnam. Reformasi ekonomi Chintanakan Mai (1986) mirip Đổi Mới Vietnam. Kini salah satu negara termiskin di Asia namun tumbuh stabil dengan ekonomi berbasis sumber daya alam, PLTA, dan pariwisata. Diketuai oleh Partai Revolusioner Rakyat Laos.' }
+        ],
+        figures: [
+            { name: 'Fa Ngum', role: 'Pendiri Lan Xang', initials: 'F', bio: 'Pendiri Kerajaan Lan Xang tahun 1353. Menyatukan berbagai kerajaan Lao dan menjadikan Buddha Theravada agama negara. Bapak bangsa Laos.' },
+            { name: 'Souphanouvong', role: 'Pemimpin Pathet Lao', initials: 'S', bio: 'Pangeran "merah" yang memimpin Pathet Lao. Presiden pertama RDL Laos (1975-1991). Salah satu "tiga pangeran" bersama saudara-saudaranya yang memilih sisi berbeda dalam perang saudara.' },
+            { name: 'Prince Phetsarath', role: 'Bapak Kemerdekaan Laos', initials: 'P', bio: 'Wakil Raja terakhir Laos yang memproklamasikan kemerdekaan Laos 12 Oktober 1945. Pemimpin gerakan Lao Issara (Laos Merdeka) melawan kembalinya Prancis.' },
+            { name: 'Kaysone Phomvihane', role: 'Bapak Revolusi Laos', initials: 'K', bio: 'Pemimpin Partai Revolusioner Rakyat Laos dan Perdana Menteri pertama (1975-1991). Arsitek sistem politik Laos modern.' }
+        ]
+    },
+    {
+        id: 'kamboja',
+        name: 'Kamboja',
+        continent: 'asia',
+        emblem: '🛕',
+        preview: 'Penerus Kekaisaran Khmer yang membangun Angkor Wat, dengan sejarah kelam Khmer Merah.',
+        history: [
+            { period: 'Kerajaan Funan & Chenla', text: 'Kerajaan Funan (abad 1-6) menjadi peradaban India pertama di Asia Tenggara. Dilanjutkan Chenla (abad 6-9) yang menjadi fondasi kebudayaan Khmer. Pengaruh Hindu dan Buddha dari India membentuk budaya, seni, dan arsitektur.' },
+            { period: 'Kekaisaran Khmer', text: 'Kekaisaran Khmer (802-1431) mencapai puncak di bawah Suryavarman II (pembangun Angkor Wat, abad 12) dan Jayavarman VII (pembangun Angkor Thom, abad 12-13). Angkor menjadi kota pra-industrial terbesar di dunia dengan sistem hidrolik canggih.' },
+            { period: 'Masa Kegelapan & Protektorat', text: 'Abad 15-19, Kamboja melemah dan menjadi medan rebutan Siam (Thailand) dan Vietnam. 1863, Raja Norodom menerima protektorat Prancis untuk menyelamatkan Kamboja dari aneksasi. Prancis merestorasi Angkor dan membangun administrasi modern.' },
+            { period: 'Kemerdekaan & Perang', text: '9 November 1953 Kamboja merdeka di bawah Raja Norodom Sihanouk. Terlibat dalam Perang Vietnam. 1970 kudeta Lon Nol mendirikan Republik Khmer. Perang saudara dan pemboman AS menghancurkan negara.' },
+            { period: 'Khmer Merah & Era Modern', text: '17 April 1975, Khmer Merah Pol Pot merebut Phnom Penh. Genosida 1975-1979 menewaskan 1,5-2 juta jiwa (25% populasi). Vietnam menggulingkan Khmer Merah 1979. Perjanjian Paris 1991 dan pemilu 1993 memulihkan monarki. Kini di bawah PM Hun Manet (2023-sekarang), putra Hun Sen yang berkuasa 38 tahun.' }
+        ],
+        figures: [
+            { name: 'Jayavarman VII', role: 'Raja Terbesar Khmer', initials: 'J', bio: 'Raja Khmer (1181-1218) yang membangun Angkor Thom dan Bayon. Memeluk Buddha Mahayana dan membangun ratusan rumah sakit serta jalan. Dianggap raja terbesar Kamboja.' },
+            { name: 'Suryavarman II', role: 'Pembangun Angkor Wat', initials: 'S', bio: 'Raja Khmer (1113-1150) yang membangun Angkor Wat, monumen religius terbesar di dunia. Kuil ini menjadi simbol Kamboja dan Warisan Dunia UNESCO.' },
+            { name: 'Norodom Sihanouk', role: 'Raja-Bapak Kemerdekaan', initials: 'N', bio: 'Raja yang menegosiasikan kemerdekaan 1953. Memerintah beberapa periode, menjadi simbol persatuan. Wafat 2012, digantikan putranya Norodom Sihamoni.' },
+            { name: 'Son Sann', role: 'Negarawan & PM', initials: 'S', bio: 'Perdana Menteri dan tokoh politik yang menentang Khmer Merah dan Vietnam. Simbol oposisi demokrasi dan nasionalisme Kamboja modern.' }
+        ]
+    },
+    {
+        id: 'brunei',
+        name: 'Brunei Darussalam',
+        continent: 'asia',
+        emblem: '🕌',
+        preview: 'Kesultanan Melayu Islam yang kaya minyak, satu-satunya negara absolut di Asia Tenggara.',
+        history: [
+            { period: 'Kesultanan Awal', text: 'Menurut tradisi, Kesultanan Brunei didirikan Awang Alak Betatar abad ke-7. Menjadi kerajaan maritim besar abad 15-17 di bawah Sultan Bolkiah (1485-1524), menguasai seluruh Borneo, Sulu, dan sebagian Filipina. Pusat penyebaran Islam di Nusantara.' },
+            { period: 'Kemunduran & Kolonialisme', text: 'Abad 18-19, Brunei melemah akibat perang saudara dan ekspansi Eropa. James Brooke (petualang Inggris) menjadi Raja Sarawak 1841, memotong wilayah Brunei. Perusahaan Borneo Utara Inggris mengambil Sabah. Brunei kehilangan hampir seluruh wilayahnya.' },
+            { period: 'Protektorat Inggris', text: '1888 Brunei menjadi protektorat Inggris. 1906, sistem Resident Inggris memerintah atas nama Sultan. Minyak ditemukan 1929 di Seria, mengubah ekonomi Brunei. Sultan Omar Ali Saifuddien III (1950-1967) modernisasi dan menyusun konstitusi.' },
+            { period: 'Pemberontakan & Jalan ke Kemerdekaan', text: '1962 Pemberontakan Brunei oleh Partai Rakyat Azahari ditumpas. Brunei menolak bergabung dengan Federasi Malaysia. 1971 perjanjian baru memberi Brunei pemerintahan internal penuh. 1 Januari 1984, Brunei Darussalam merdeka penuh dari Inggris.' },
+            { period: 'Era Modern', text: 'Sultan Hassanal Bolkiah memerintah sejak 1967 — salah satu penguasa terlama di dunia. Melayu Islam Beraja (MIB) menjadi filosofi negara. Negara kaya minyak dan gas dengan kesejahteraan tinggi. 2004, konstitusi diubah memberi Sultan kekuasaan absolut. 2019, menerapkan hukum syariah penuh.' }
+        ],
+        figures: [
+            { name: 'Sultan Bolkiah', role: 'Sultan Kelima', initials: 'B', bio: 'Sultan ke-5 (1485-1524) yang membawa Brunei ke puncak kejayaan. Menaklukkan Sulu, Manila, dan sebagian besar Borneo. Dianggap sultan terhebat dalam sejarah Brunei.' },
+            { name: 'Sultan Hassanal Bolkiah', role: 'Sultan Saat Ini', initials: 'H', bio: 'Sultan ke-29 (1967-sekarang). Salah satu penguasa terlama dan terkaya di dunia. Arsitek Brunei modern dan filosofi Melayu Islam Beraja.' },
+            { name: 'Sultan Omar Ali Saifuddien III', role: 'Bapak Kemerdekaan', initials: 'O', bio: 'Sultan ke-28 (1950-1967). Modernisator Brunei, penyusun konstitusi pertama, dan pembangun Masjid Omar Ali Saifuddien yang ikonik. Ayah Sultan Hassanal Bolkiah.' },
+            { name: 'Pengiran Muda Mohamed Alam', role: 'Pahlawan Nasional', initials: 'A', bio: 'Pejuang Brunei yang memimpin perlawanan terhadap James Brooke dan ekspansi Sarawak. Simbol perlawanan Brunei terhadap kolonialisme Brooke.' }
         ]
     }
 ];
@@ -1431,7 +1404,6 @@ function renderCountries(list = COUNTRIES) {
         `;
         card.addEventListener('click', () => openCountryModal(country.id));
         countriesGrid.appendChild(card);
-        // Trigger animasi fade-in
         setTimeout(() => card.classList.add('visible'), 50);
     });
 }
@@ -1447,12 +1419,10 @@ function applyFilters() {
     const query = searchInput.value.toLowerCase().trim();
     let filtered = COUNTRIES;
 
-    // Filter benua
     if (currentFilter !== 'all') {
         filtered = filtered.filter(c => c.continent === currentFilter);
     }
 
-    // Filter pencarian (nama negara, preview, atau nama tokoh)
     if (query) {
         filtered = filtered.filter(c => {
             const nameMatch = c.name.toLowerCase().includes(query);
@@ -1491,7 +1461,6 @@ function openCountryModal(id) {
     document.getElementById('modalCountryName').textContent = country.name;
     document.getElementById('modalContinent').textContent = country.continent;
 
-    // Render sejarah
     const historyContainer = document.getElementById('modalHistory');
     historyContainer.innerHTML = country.history.map(h => `
         <div class="history-block">
@@ -1500,7 +1469,6 @@ function openCountryModal(id) {
         </div>
     `).join('');
 
-    // Render tokoh
     const figuresContainer = document.getElementById('modalFigures');
     figuresContainer.innerHTML = country.figures.map((f, idx) => `
         <div class="figure-card" data-country="${id}" data-figure="${idx}">
@@ -1510,7 +1478,6 @@ function openCountryModal(id) {
         </div>
     `).join('');
 
-    // Tambahkan event listener ke setiap kartu tokoh
     figuresContainer.querySelectorAll('.figure-card').forEach(card => {
         card.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -1580,12 +1547,11 @@ hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('open');
 });
 
-// Tutup menu saat link di-klik (mobile)
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => navLinks.classList.remove('open'));
 });
 
-/* ---------- ANIMASI SCROLL (Intersection Observer) ---------- */
+/* ---------- ANIMASI SCROLL ---------- */
 const observerOptions = {
     threshold: 0.15,
     rootMargin: '0px 0px -50px 0px'
@@ -1599,7 +1565,6 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observasi elemen fade-in dan era-item
 document.querySelectorAll('.fade-in, .era-item').forEach(el => {
     observer.observe(el);
 });
@@ -1616,7 +1581,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-/* ---------- LOG SELAMAT DATANG DI KONSOL ---------- */
 console.log('%c🏛️ Museum Sejarah Dunia & Peradaban Negara', 'color:#d4af37;font-size:20px;font-weight:bold;');
 console.log('%c"Sejarah adalah saksi masa lalu, cahaya kebenaran, dan teladan bagi masa depan."', 'color:#c8c2b3;font-style:italic;');
 </script>
