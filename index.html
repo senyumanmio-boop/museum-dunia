@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Museum Sejarah Dunia & Peradaban Negara</title>
+<meta name="description" content="Museum virtual interaktif menjelajahi sejarah dunia, peradaban kuno, dan perjalanan kemerdekaan negara-negara di dunia." />
+
+<!-- Google Fonts: Playfair Display (judul klasik) + Inter (body modern) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   MUSEUM SEJARAH DUNIA - STYLE.CSS (EMBEDDED)
+   Tema: Dark Gallery Elegan dengan Aksen Emas Klasik
+   ========================================================= */
+
+/* ---------- RESET & VARIABEL GLOBAL ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* Palet warna museum virtual */
+    --bg-primary: #0d0d0d;          /* Hitam arang pekat */
+    --bg-secondary: #1a1a1a;        /* Abu-abu sangat tua */
+    --bg-tertiary: #242424;         /* Abu-abu tua untuk card */
+    --bg-elevated: #2d2d2d;         /* Hover / elevated state */
+    --gold: #d4af37;                /* Emas klasik */
+    --gold-light: #f0d77a;          /* Emas terang */
+    --gold-dark: #a8862a;           /* Emas gelap */
+    --wood: #8b6f47;                /* Cokelat kayu klasik */
+    --text-primary: #f5f1e8;        /* Krem terang */
+    --text-secondary: #c8c2b3;      /* Krem redup */
+    --text-muted: #8a8477;          /* Abu-abu krem */
+    --border-gold: rgba(212, 175, 55, 0.3);
+    --shadow-gold: 0 0 30px rgba(212, 175, 55, 0.15);
+    --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+html {
+    scroll-behavior: smooth;        /* Smooth scrolling global */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.7;
+    overflow-x: hidden;
+    background-image:
+        radial-gradient(circle at 20% 10%, rgba(212, 175, 55, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(139, 111, 71, 0.05) 0%, transparent 40%);
+}
+
+/* Scrollbar kustom ala museum */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--gold-dark), var(--gold));
+    border-radius: 5px;
+}
+
+/* ---------- TIPOGRAFI ---------- */
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--text-primary);
+}
+
+.cinzel {
+    font-family: 'Cinzel', serif;   /* Font dekoratif untuk judul utama */
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+/* ---------- NAVIGASI ATAS ---------- */
+.navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(13, 13, 13, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-gold);
+    padding: 1rem 2rem;
+    transition: var(--transition);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    font-weight: 700;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.logo::before {
+    content: "🏛️";
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    transition: var(--transition);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--gold);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Hamburger menu untuk mobile */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+}
+
+.hamburger span {
+    width: 25px; height: 2px;
+    background: var(--gold);
+    transition: var(--transition);
+}
+
+/* ---------- LOBI / HERO SECTION ---------- */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(rgba(13, 13, 13, 0.85), rgba(13, 13, 13, 0.95)),
+        radial-gradient(ellipse at center, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+}
+
+/* Ornamen pilar museum di kiri-kanan hero */
+.hero::before,
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 10%; bottom: 10%;
+    width: 2px;
+    background: linear-gradient(transparent, var(--gold), transparent);
+    opacity: 0.3;
+}
+.hero::before { left: 5%; }
+.hero::after { right: 5%; }
+
+.hero-content {
+    max-width: 900px;
+    z-index: 2;
+}
+
+.hero-subtitle {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: 0.9rem;
+    letter-spacing: 6px;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.3s forwards;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--wood) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.6s forwards;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 650px;
+    margin: 0 auto 2.5rem;
+    font-style: italic;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.9s forwards;
+}
+
+.hero-cta {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background: transparent;
+    color: var(--gold);
+    border: 2px solid var(--gold);
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeUp 1s ease 1.2s forwards;
+}
+
+.hero-cta::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: var(--gold);
+    transition: left 0.4s ease;
+    z-index: -1;
+}
+
+.hero-cta:hover {
+    color: var(--bg-primary);
+}
+
+.hero-cta:hover::before {
+    left: 0;
+}
+
+/* Animasi fade-up untuk elemen hero */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- SECTION UMUM ---------- */
+section {
+    padding: 6rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-eyebrow {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px; height: 2px;
+    background: var(--gold);
+    margin: 1rem auto 0;
+}
+
+.section-description {
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+}
+
+/* ---------- TIMELINE ERA SEJARAH ---------- */
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+
+/* Garis tengah timeline */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(var(--gold-dark), var(--gold), var(--gold-dark));
+    transform: translateX(-50%);
+}
+
+.era-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3rem;
+    position: relative;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.era-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.era-item:nth-child(odd) {
+    flex-direction: row;
+}
+
+.era-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.era-content {
+    width: 45%;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-gold);
+    padding: 2rem;
+    border-radius: 4px;
+    transition: var(--transition);
+    position: relative;
+}
+
+.era-content:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-gold);
+    border-color: var(--gold);
+}
+
+.era-year {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.era-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--gold-light);
+}
+
+.era-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Titik tengah timeline */
+.era-dot {
+    position: absolute;
+    left: 50%;
+    width: 20px; height: 20px;
+    background: var(--bg-primary);
+    border: 3px solid var(--gold);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    box-shadow: 0 0 0 4px var(--bg-primary);
+}
+
+/* ---------- GALERI NEGARA ---------- */
+.search-container {
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    padding: 1rem 1.5rem 1rem 3rem;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-gold);
+    border-radius: 50px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: var(--transition);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+.search-icon {
+    position: absolute;
+    left: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold);
+    font-size: 1.1rem;
+    pointer-events: none;
+}
+
+/* Filter kategori benua */
+.filter-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+}
+
+.filter-btn {
+    padding: 0.5rem 1.5rem;
+    background: transparent;
+    border: 1px solid var(--border-gold);
+    color: var(--text-secondary);
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: var(--transition);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--gold);
+    color: var(--bg-primary);
+    border-color: var(--gold);
+}
+
+/* Grid kartu negara */
+.countries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.country-card {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-gold);
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.country-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.country-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--gold);
+    box-shadow: var(--shadow-gold);
+}
+
+.country-emblem {
+    height: 180px;
+    background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    border-bottom: 1px solid var(--border-gold);
+    position: relative;
+    overflow: hidden;
+}
+
+.country-emblem::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(212, 175, 55, 0.15), transparent 70%);
+}
+
+.country-info {
+    padding: 1.5rem;
+}
+
+.country-name {
+    font-size: 1.4rem;
+    margin-bottom: 0.3rem;
+    color: var(--gold-light);
+}
+
+.country-continent {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.country-preview {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+    min-height: 60px;
+}
+
+.country-view-btn {
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.country-view-btn:hover {
+    background: var(--gold);
+    color: var(--bg-primary);
+}
+
+/* ---------- MODAL POP-UP ---------- */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal {
+    background: var(--bg-secondary);
+    border: 1px solid var(--gold);
+    border-radius: 6px;
+    max-width: 900px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(212, 175, 55, 0.2);
+}
+
+.modal-overlay.active .modal {
+    transform: scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    width: 40px; height: 40px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    z-index: 10;
+    transition: var(--transition);
+}
+
+.modal-close:hover {
+    background: var(--gold);
+    color: var(--bg-primary);
+    transform: rotate(90deg);
+}
+
+.modal-header {
+    padding: 3rem 2rem 2rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border-gold);
+    background: linear-gradient(rgba(13, 13, 13, 0.5), rgba(13, 13, 13, 0.5)),
+                radial-gradient(circle at center, rgba(212, 175, 55, 0.1), transparent 70%);
+}
+
+.modal-emblem {
+    font-size: 6rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.modal-country-name {
+    font-size: 2.5rem;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+}
+
+.modal-continent {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    letter-spacing: 3px;
+    font-size: 0.85rem;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.modal-section {
+    margin-bottom: 2.5rem;
+}
+
+.modal-section-title {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-gold);
+}
+
+.history-block {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--gold);
+}
+
+.history-period {
+    font-family: 'Cinzel', serif;
+    color: var(--gold-light);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.3rem;
+}
+
+.history-text {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* Galeri tokoh dalam modal */
+.figures-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.figure-card {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-gold);
+    border-radius: 4px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.figure-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+    box-shadow: var(--shadow-gold);
+}
+
+.figure-avatar {
+    width: 80px; height: 80px;
+    margin: 0 auto 1rem;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    color: var(--bg-primary);
+    font-weight: 700;
+    border: 2px solid var(--gold-light);
+}
+
+.figure-name {
+    font-size: 1rem;
+    color: var(--gold-light);
+    margin-bottom: 0.3rem;
+}
+
+.figure-role {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Modal detail tokoh */
+.figure-modal-content {
+    padding: 2rem;
+    text-align: center;
+}
+
+.figure-modal-avatar {
+    width: 120px; height: 120px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+    color: var(--bg-primary);
+    font-weight: 700;
+    border: 3px solid var(--gold-light);
+}
+
+.figure-modal-name {
+    font-size: 1.8rem;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+}
+
+.figure-modal-role {
+    color: var(--gold);
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.figure-modal-bio {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    text-align: left;
+    padding: 1.5rem;
+    background: var(--bg-tertiary);
+    border-left: 3px solid var(--gold);
+    border-radius: 4px;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-gold);
+    padding: 3rem 2rem 2rem;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.footer-logo {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: 1.3rem;
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+}
+
+.footer-text {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+    font-style: italic;
+}
+
+.footer-credits {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-gold);
+    letter-spacing: 1px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px) {
+    /* Timeline jadi vertikal penuh di mobile */
+    .timeline::before { left: 20px; }
+    .era-item,
+    .era-item:nth-child(even) {
+        flex-direction: row;
+        padding-left: 50px;
+    }
+    .era-content { width: 100%; }
+    .era-dot {
+        left: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hamburger { display: flex; }
+    .nav-links {
+        position: fixed;
+        top: 70px; right: -100%;
+        flex-direction: column;
+        background: var(--bg-secondary);
+        width: 70%;
+        height: calc(100vh - 70px);
+        padding: 2rem;
+        gap: 1.5rem;
+        border-left: 1px solid var(--border-gold);
+        transition: right 0.4s ease;
+    }
+    .nav-links.open { right: 0; }
+    section { padding: 4rem 1rem; }
+    .hero { padding: 5rem 1rem 3rem; }
+    .modal-body { padding: 1.5rem; }
+    .modal-header { padding: 2rem 1rem 1.5rem; }
+    .modal-country-name { font-size: 1.8rem; }
+}
+
+/* ---------- UTILITAS ANIMASI ---------- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- =========================================================
+     NAVIGASI UTAMA
+     ========================================================= -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">Museum Historia</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Lobi</a></li>
+            <li><a href="#eras">Era Sejarah</a></li>
+            <li><a href="#countries">Galeri Negara</a></li>
+            <li><a href="#about">Tentang</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- =========================================================
+     LOBI MUSEUM (HERO)
+     ========================================================= -->
+<header class="hero" id="home">
+    <div class="hero-content">
+        <p class="hero-subtitle">Selamat Datang di</p>
+        <h1 class="hero-title">Museum Sejarah Dunia<br>&amp; Peradaban Negara</h1>
+        <p class="hero-description">
+            "Sebuah perjalanan melintasi waktu — dari fajar peradaban hingga kemerdekaan bangsa-bangsa.
+            Jelajahi lorong-lorong sejarah, kenali para tokoh, dan hayati jejak langkah umat manusia."
+        </p>
+        <a href="#eras" class="hero-cta">Masuk ke Pameran</a>
+    </div>
+</header>
+
+<!-- =========================================================
+     ERA SEJARAH DUNIA (TIMELINE)
+     ========================================================= -->
+<section id="eras">
+    <div class="section-header fade-in">
+        <p class="section-eyebrow">Kategori Utama</p>
+        <h2 class="section-title">Era Sejarah Dunia</h2>
+        <p class="section-description">
+            Melintasi zaman dari masa prasejarah hingga era kemerdekaan modern —
+            setiap babak membentuk wajah peradaban yang kita kenal hari ini.
+        </p>
+    </div>
+
+    <div class="timeline" id="timeline">
+        <!-- Era 1 -->
+        <div class="era-item">
+            <div class="era-content">
+                <p class="era-year">± 2,5 Juta – 3000 SM</p>
+                <h3 class="era-title">Prasejarah</h3>
+                <p class="era-description">
+                    Masa sebelum tulisan dikenal. Manusia purba belajar membuat alat batu,
+                    menemukan api, dan mulai hidup berkelompok. Lukisan gua di Lascaux dan
+                    Sulawesi menjadi saksi bisu peradaban awal manusia.
+                </p>
+            </div>
+            <div class="era-dot"></div>
+        </div>
+
+        <!-- Era 2 -->
+        <div class="era-item">
+            <div class="era-content">
+                <p class="era-year">3000 SM – 476 M</p>
+                <h3 class="era-title">Peradaban Kuno</h3>
+                <p class="era-description">
+                    Lahirnya peradaban besar: Mesir dengan piramidanya, Mesopotamia dengan
+                    tulisan paku, Yunani dengan demokrasi, Romawi dengan hukum dan arsitekturnya,
+                    serta peradaban Indus dan Tiongkok kuno.
+                </p>
+            </div>
+            <div class="era-dot"></div>
+        </div>
+
+        <!-- Era 3 -->
+        <div class="era-item">
+            <div class="era-content">
+                <p class="era-year">476 – 1453</p>
+                <h3 class="era-title">Abad Pertengahan</h3>
+                <p class="era-description">
+                    Era feodalisme di Eropa, kebangkitan Islam dan Kekhalifahan, Perang Salib,
+                    kerajaan Majapahit dan Sriwijaya di Nusantara, serta ekspansi Mongol
+                    yang mengubah peta dunia.
+                </p>
+            </div>
+            <div class="era-dot"></div>
+        </div>
+
+        <!-- Era 4 -->
+        <div class="era-item">
+            <div class="era-content">
+                <p class="era-year">1453 – 1750</p>
+                <h3 class="era-title">Renaisans &amp; Penjelajahan</h3>
+                <p class="era-description">
+                    Kebangkitan seni dan ilmu pengetahuan di Eropa. Columbus menemukan benua
+                    Amerika (1492), Magelhaens mengelilingi dunia, dan dimulailah era kolonialisme
+                    yang mengubah nasib bangsa-bangsa.
+                </p>
+            </div>
+            <div class="era-dot"></div>
+        </div>
+
+        <!-- Era 5 -->
+        <div class="era-item">
+            <div class="era-content">
+                <p class="era-year">1750 – 1945</p>
+                <h3 class="era-title">Kolonialisme &amp; Revolusi</h3>
+                <p class="era-description">
+                    Revolusi Amerika (1776) dan Prancis (1789), Revolusi Industri,
+                    penjajahan Eropa di Asia-Afrika, Perang Dunia I &amp; II,
+                    serta bangkitnya gerakan nasionalisme di seluruh dunia.
+                </p>
+            </div>
+            <div class="era-dot"></div>
+        </div>
+
+        <!-- Era 6 -->
+        <div class="era-item">
+            <div class="era-content">
+                <p class="era-year">1945 – Sekarang</p>
+                <h3 class="era-title">Era Kemerdekaan Modern</h3>
+                <p class="era-description">
+                    Dekolonisasi besar-besaran, lahirnya PBB, Perang Dingin,
+                    runtuhnya Uni Soviet, revolusi digital, dan tantangan global
+                    abad ke-21: perubahan iklim, AI, dan tatanan dunia baru.
+                </p>
+            </div>
+            <div class="era-dot"></div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================
+     GALERI NEGARA-NEGARA DI DUNIA
+     ========================================================= -->
+<section id="countries">
+    <div class="section-header fade-in">
+        <p class="section-eyebrow">Koleksi Utama</p>
+        <h2 class="section-title">Galeri Sejarah Negara</h2>
+        <p class="section-description">
+            Jelajahi perjalanan setiap bangsa — dari akar peradaban, masa penjajahan,
+            perjuangan kemerdekaan, hingga wajah modernnya hari ini.
+        </p>
+    </div>
+
+    <!-- Search bar -->
+    <div class="search-container fade-in">
+        <span class="search-icon">🔍</span>
+        <input
+            type="text"
+            class="search-input"
+            id="searchInput"
+            placeholder="Cari negara atau tokoh sejarah..."
+            autocomplete="off"
+        />
+    </div>
+
+    <!-- Filter benua -->
+    <div class="filter-tabs fade-in" id="filterTabs">
+        <button class="filter-btn active" data-filter="all">Semua</button>
+        <button class="filter-btn" data-filter="asia">Asia</button>
+        <button class="filter-btn" data-filter="eropa">Eropa</button>
+        <button class="filter-btn" data-filter="amerika">Amerika</button>
+        <button class="filter-btn" data-filter="afrika">Afrika</button>
+        <button class="filter-btn" data-filter="oceania">Oceania</button>
+    </div>
+
+    <!-- Grid negara (diisi oleh JavaScript) -->
+    <div class="countries-grid" id="countriesGrid"></div>
+</section>
+
+<!-- =========================================================
+     TENTANG MUSEUM
+     ========================================================= -->
+<section id="about">
+    <div class="section-header fade-in">
+        <p class="section-eyebrow">Tentang Pameran</p>
+        <h2 class="section-title">Tentang Museum Ini</h2>
+        <p class="section-description">
+            Museum Sejarah Dunia &amp; Peradaban Negara adalah sebuah galeri virtual yang
+            didedikasikan untuk melestarikan memori kolektif umat manusia. Setiap sudut
+            pameran dirancang untuk mengajak pengunjung memahami bahwa sejarah bukan sekadar
+            masa lalu — ia adalah cermin yang membentuk siapa kita hari ini, dan kompas
+            yang menuntun langkah kita esok.
+        </p>
+    </div>
+</section>
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+<footer>
+    <div class="footer-logo">🏛️ Museum Historia</div>
+    <p class="footer-text">
+        "Bangsa yang besar adalah bangsa yang menghargai jasa pahlawannya."
+        — Ir. Soekarno
+    </p>
+    <p class="footer-credits">
+        © 2026 Museum Sejarah Dunia &amp; Peradaban Negara — Dibuat dengan cinta untuk pendidikan sejarah.
+    </p>
+</footer>
+
+<!-- =========================================================
+     MODAL: Detail Negara
+     ========================================================= -->
+<div class="modal-overlay" id="countryModal">
+    <div class="modal">
+        <button class="modal-close" id="closeCountryModal">✕</button>
+        <div class="modal-header">
+            <span class="modal-emblem" id="modalEmblem"></span>
+            <h2 class="modal-country-name" id="modalCountryName"></h2>
+            <p class="modal-continent" id="modalContinent"></p>
+        </div>
+        <div class="modal-body">
+            <div class="modal-section">
+                <h3 class="modal-section-title">Sejarah Lengkap</h3>
+                <div id="modalHistory"></div>
+            </div>
+            <div class="modal-section">
+                <h3 class="modal-section-title">Tokoh Penting</h3>
+                <div class="figures-grid" id="modalFigures"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =========================================================
+     MODAL: Detail Tokoh
+     ========================================================= -->
+<div class="modal-overlay" id="figureModal">
+    <div class="modal" style="max-width: 600px;">
+        <button class="modal-close" id="closeFigureModal">✕</button>
+        <div class="figure-modal-content">
+            <div class="figure-modal-avatar" id="figureAvatar"></div>
+            <h2 class="figure-modal-name" id="figureName"></h2>
+            <p class="figure-modal-role" id="figureRole"></p>
+            <p class="figure-modal-bio" id="figureBio"></p>
+        </div>
+    </div>
+</div>
+
+<script>
+/* =========================================================
+   MUSEUM SEJARAH DUNIA - SCRIPT.JS (EMBEDDED)
+   Berisi: Data negara, rendering galeri, pencarian, filter,
+           modal interaktif, dan animasi scroll.
+   ========================================================= */
+
+/* ---------- DATA NEGARA ----------
+   Struktur data dirancang modular agar mudah ditambah negara baru.
+   Cukup tambahkan objek baru ke array COUNTRIES. */
+
+const COUNTRIES = [
+    {
+        id: 'indonesia',
+        name: 'Indonesia',
+        continent: 'asia',
+        emblem: '🦅',
+        preview: 'Negara kepulauan terbesar di dunia dengan warisan kerajaan maritim dan perjuangan kemerdekaan yang heroik.',
+        history: [
+            {
+                period: 'Masa Kerajaan Kuno',
+                text: 'Nusantara menjadi pusat peradaban maritim dengan kerajaan Hindu-Buddha seperti Sriwijaya (abad ke-7) yang menguasai jalur perdagangan Selat Malaka, dan Majapahit (abad ke-14) di bawah Patih Gajah Mada yang menyatukan Nusantara melalui Sumpah Palapa. Candi Borobudur dan Prambanan menjadi bukti kejayaan masa ini.'
+            },
+            {
+                period: 'Masa Kesultanan Islam',
+                text: 'Islam masuk melalui jalur perdagangan dan melahirkan kesultanan besar seperti Samudera Pasai, Demak, Aceh, Mataram Islam, Gowa-Tallo, dan Ternate-Tidor. Masa ini menjadi jembatan antara peradaban Hindu-Buddha dan era kolonial.'
+            },
+            {
+                period: 'Masa Penjajahan',
+                text: 'Portugis tiba tahun 1512, disusul Belanda melalui VOC (1602) yang memonopoli rempah-rempah. Belanda menguasai hampir seluruh Nusantara selama ±350 tahun, melakukan tanam paksa (cultuurstelsel) dan kerja rodi. Perlawanan muncul dari Diponegoro, Imam Bonjol, Cut Nyak Dien, dan banyak pahlawan lainnya.'
+            },
+            {
+                period: 'Pergerakan Nasional',
+                text: 'Awal abad ke-20 lahir kesadaran berbangsa. Budi Utomo (1908) menandai kebangkitan nasional, disusul Sumpah Pemuda 28 Oktober 1928 yang mengikrarkan satu tanah air, satu bangsa, satu bahasa: Indonesia.'
+            },
+            {
+                period: 'Proklamasi & Era Modern',
+                text: '17 Agustus 1945 Soekarno-Hatta memproklamasikan kemerdekaan Indonesia. Setelah perjuangan diplomasi dan fisik, Belanda mengakui kedaulatan tahun 1949. Indonesia kini menjadi negara demokrasi terbesar ke-3 di dunia dengan 270+ juta penduduk dan ekonomi G20.'
+            }
+        ],
+        figures: [
+            { name: 'Ir. Soekarno', role: 'Proklamator & Presiden Pertama', initials: 'S', bio: 'Bapak Proklamasi dan Presiden pertama Republik Indonesia. Orator ulung yang mencetuskan Pancasila pada 1 Juni 1945 dan membacakan teks Proklamasi bersama Mohammad Hatta pada 17 Agustus 1945. Pemimpin Gerakan Non-Blok dan tokoh dunia.' },
+            { name: 'Drs. Mohammad Hatta', role: 'Proklamator & Wakil Presiden Pertama', initials: 'H', bio: 'Bapak Koperasi Indonesia dan Wakil Presiden pertama. Pemikir cerdas yang bersama Soekarno menyusun teks proklamasi. Dikenal sebagai sosok sederhana, disiplin, dan cinta buku.' },
+            { name: 'Pangeran Diponegoro', role: 'Pahlawan Perang Jawa', initials: 'D', bio: 'Pemimpin Perang Jawa (1825-1830) melawan Belanda. Perang terbesar yang dihadapi Belanda di Nusantara. Meski akhirnya ditangkap dan diasingkan ke Makassar, semangatnya menginspirasi generasi pejuang berikutnya.' },
+            { name: 'R.A. Kartini', role: 'Pioneer Emansipasi Wanita', initials: 'K', bio: 'Putra Jepara yang memperjuangkan hak pendidikan perempuan melalui surat-suratnya yang dibukukan menjadi "Habis Gelap Terbitlah Terang". Hari lahirnya (21 April) diperingati sebagai Hari Kartini.' }
+        ]
+    },
+    {
+        id: 'amerika-serikat',
+        name: 'Amerika Serikat',
+        continent: 'amerika',
+        emblem: '🗽',
+        preview: 'Negara adidaya modern yang lahir dari revolusi melawan kolonialisme Inggris dan membangun demokrasi konstitusional.',
+        history: [
+            {
+                period: 'Penduduk Asli',
+                text: 'Sebelum kedatangan Eropa, benua Amerika dihuni oleh ratusan suku asli (Native Americans) seperti Navajo, Sioux, Cherokee, Iroquois, dan Pueblo dengan peradaban dan kebudayaan yang kaya.'
+            },
+            {
+                period: 'Kolonialisme Eropa',
+                text: 'Columbus tiba tahun 1492. Inggris mendirikan 13 koloni di pesisir timur (1607-1732). Prancis menguasai Louisiana, Spanyol di Florida dan barat daya. Periode ini diwarnai konflik dengan penduduk asli dan perdagangan budak Afrika.'
+            },
+            {
+                period: 'Revolusi & Kemerdekaan',
+                text: '4 Juli 1776, Kongres Kontinental mendeklarasikan kemerdekaan dari Inggris. Dipimpin George Washington, perang revolusi berakhir dengan kemenangan Amerika. Konstitusi AS diratifikasi tahun 1788 dengan Bill of Rights (1791).'
+            },
+            {
+                period: 'Perang Saudara & Ekspansi',
+                text: 'Perang Saudara (1861-1865) mengakhiri perbudakan di bawah Presiden Abraham Lincoln. AS berekspansi ke barat (Louisiana Purchase, Perang Meksiko) dan menjadi kekuatan industri utama.'
+            },
+            {
+                period: 'Era Modern',
+                text: 'Berperan besar dalam Perang Dunia I & II, memenangkan Perang Dingin melawan Uni Soviet (1991), dan menjadi kekuatan ekonomi, teknologi, dan budaya dominan dunia hingga kini.'
+            }
+        ],
+        figures: [
+            { name: 'George Washington', role: 'Bapak Bangsa & Presiden Pertama', initials: 'G', bio: 'Panglima Perang Kemerdekaan dan Presiden AS pertama (1789-1797). Menolak menjadi raja dan menetapkan tradisi demokrasi dua periode yang menjadi fondasi republik.' },
+            { name: 'Abraham Lincoln', role: 'Presiden ke-16', initials: 'A', bio: 'Memimpin AS melewati Perang Saudara dan mengeluarkan Emancipation Proclamation (1863) yang mengakhiri perbudakan. Terbunuh oleh assassin tahun 1865.' },
+            { name: 'Thomas Jefferson', role: 'Penulis Deklarasi Kemerdekaan', initials: 'T', bio: 'Penulis utama Declaration of Independence (1776) dan Presiden ke-3. Pemikir Pencerahan yang merumuskan prinsip "semua manusia diciptakan setara".' },
+            { name: 'Martin Luther King Jr.', role: 'Pemimpin Hak Sipil', initials: 'M', bio: 'Pendeta Baptis yang memimpin gerakan hak sipil dengan filosofi non-kekerasan. Pidato "I Have a Dream" (1963) menjadi ikon perjuangan kesetaraan ras.' }
+        ]
+    },
+    {
+        id: 'jepang',
+        name: 'Jepang',
+        continent: 'asia',
+        emblem: '🗾',
+        preview: 'Negeri Matahari Terbit yang memadukan tradisi kekaisaran ribuan tahun dengan modernitas teknologi mutakhir.',
+        history: [
+            {
+                period: 'Jepang Kuno',
+                text: 'Menurut legenda, Jepang didirikan oleh Kaisar Jimmu tahun 660 SM. Periode Yayoi (300 SM-300 M) memperkenalkan pertanian padi. Kebudayaan Tiongkok dan Buddha masuk melalui Korea pada abad ke-6.'
+            },
+            {
+                period: 'Periode Klasik & Feodal',
+                text: 'Periode Nara dan Heian (710-1185) menjadi puncak kebudayaan istana. Lahirnya kelas samurai dan Keshogunan Kamakura (1185). Periode Sengoku (abad 15-16) adalah era perang saudara sebelum penyatuan oleh Oda Nobunaga, Toyotomi Hideyoshi, dan Tokugawa Ieyasu.'
+            },
+            {
+                period: 'Keshogunan Tokugawa',
+                text: '1603-1868, Jepang menutup diri (sakoku) selama 250 tahun. Kebudayaan Eian berkembang: kabuki, ukiyo-e, upacara teh. Tahun 1853, Komodor Perry memaksa Jepang membuka diri.'
+            },
+            {
+                period: 'Restorasi Meiji & Imperialisme',
+                text: '1868 Restorasi Meiji memodernisasi Jepang secara drastis. Kemenangan atas Tiongkok (1895) dan Rusia (1905). Jepang menjadi kekuatan imperialis, menganeksasi Korea (1910), dan berperang di Perang Dunia II hingga kalah tahun 1945.'
+            },
+            {
+                period: 'Era Modern',
+                text: 'Di bawah konstitusi pasifis 1947 dan Kaisar Hirohito, Jepang bangkit menjadi kekuatan ekonomi ke-2 dunia. Era Reiwa (2019-sekarang) di bawah Kaisar Naruhito melanjutkan tradisi sambil menghadapi tantangan demografi.'
+            }
+        ],
+        figures: [
+            { name: 'Kaisar Meiji', role: 'Pemimpin Restorasi Meiji', initials: 'M', bio: 'Kaisar ke-122 (1867-1912) yang membawa Jepang dari negara feodal tertutup menjadi negara modern industri. Era pemerintahannya mengubah Jepang menjadi kekuatan dunia.' },
+            { name: 'Tokugawa Ieyasu', role: 'Shogun Pertama Edo', initials: 'T', bio: 'Pemenang Pertempuran Sekigahara (1600) dan pendiri Keshogunan Tokugawa yang menyatukan Jepang dan memerintah selama 268 tahun perdamaian.' },
+            { name: 'Oda Nobunaga', role: 'Penyatap Jepang', initials: 'O', bio: 'Daimyo yang memulai penyatuan Jepang setelah era Sengoku. Dikenal sebagai jenius militer yang kejam namun visioner. Terbunuh dalam Insiden Honnoji 1582.' },
+            { name: 'Saigo Takamori', role: 'Samurai Terakhir', initials: 'S', bio: 'Tokoh Restorasi Meiji yang kemudian memimpin Pemberontakan Satsuma (1877) melawan modernisasi. Simbol semangat bushido dan romantisme samurai.' }
+        ]
+    },
+    {
+        id: 'mesir',
+        name: 'Mesir',
+        continent: 'afrika',
+        emblem: '🏺',
+        preview: 'Peradaban tertua di dunia yang memberi warisan piramida, hieroglif, dan ilmu pengetahuan yang mengubah sejarah.',
+        history: [
+            {
+                period: 'Mesir Kuno',
+                text: 'Peradaban Mesir lahir sekitar 3100 SM ketika Firaun Menes menyatukan Mesir Hulu dan Hilir. Membangun piramida Giza (2500 SM), mengembangkan hieroglif, kalender, dan ilmu kedokteran. Mencapai puncak di bawah Ramses II.'
+            },
+            {
+                period: 'Masa Yunani-Romawi',
+                text: 'Alexander Agung menaklukkan Mesir tahun 332 SM, mendirikan Alexandria. Dinasti Ptolema memerintah hingga Cleopatra VII. Mesir menjadi provinsi Romawi tahun 30 SM.'
+            },
+            {
+                period: 'Masa Islam',
+                text: 'Arab Muslim menaklukkan Mesir tahun 641 M di bawah Amr bin Ash. Mesir menjadi pusat peradaban Islam dengan Dinasti Fatimiyah (Kairo didirikan 969), Ayyubiyah (Salahuddin Al-Ayyub), dan Mamluk.'
+            },
+            {
+                period: 'Masa Ottoman & Kolonial',
+                text: 'Ottoman menguasai Mesir 1517-1917. Muhammad Ali modernisasi Mesir abad 19. Inggris menduduki Mesir 1882 dan menjadikannya protektorat hingga setelah Perang Dunia II.'
+            },
+            {
+                period: 'Republik Modern',
+                text: '1952 Revolusi Mesir dipimpin Gerakan Perwira Bebas menggulingkan kerajaan. Gamal Abdel Nasser menjadi presiden, menasionalisasi Terusan Suez (1956). Mesir modern menghadapi tantangan politik dan ekonomi hingga era Presiden Abdel Fattah el-Sisi.'
+            }
+        ],
+        figures: [
+            { name: 'Tutankhamun', role: 'Firaun Muda', initials: 'T', bio: 'Firaun Dinasti ke-18 yang naik takhta usia 9 tahun. Makamnya ditemukan Howard Carter tahun 1922 dalam kondisi utuh, menjadi penemuan arkeologi terbesar abad 20.' },
+            { name: 'Cleopatra VII', role: 'Ratu Terakhir Mesir', initials: 'C', bio: 'Ratu Ptolemaik terakhir yang menguasai bahasa Mesir dan 8 bahasa lain. Bersekutu dengan Julius Caesar dan Marcus Antonius. Kematiannya menandai akhir Mesir kuno dan awal kekuasaan Romawi.' },
+            { name: 'Salahuddin Al-Ayyub', role: 'Sultan & Pembebas Yerusalem', initials: 'S', bio: 'Pendiri Dinasti Ayyubiyah yang merebut Yerusalem dari Tentara Salib tahun 1187. Dikenal sebagai ksatria ksatria yang adil bahkan oleh musuhnya dalam Perang Salib.' },
+            { name: 'Gamal Abdel Nasser', role: 'Presiden & Pemimpin Pan-Arab', initials: 'N', bio: 'Pemimpin Revolusi 1952 dan Presiden kedua Mesir (1956-1970). Tokoh Gerakan Non-Blok yang menasionalisasi Terusan Suez dan menjadi simbol nasionalisme Arab.' }
+        ]
+    },
+    {
+        id: 'prancis',
+        name: 'Prancis',
+        continent: 'eropa',
+        emblem: '🗼',
+        preview: 'Pusat Pencerahan Eropa yang melahirkan revolusi demokrasi, hak asasi manusia, dan kebudayaan tinggi.',
+        history: [
+            {
+                period: 'Galia & Franka',
+                text: 'Prancis modern berasal dari suku Kelt Galia yang ditaklukkan Julius Caesar (58-50 SM). Setelah Romawi runtuh, suku Franka di bawah Clovis I mendirikan kerajaan (481 M). Dinasti Karoling dengan Charlemagne menjadi kekuatan Eropa abad 8-9.'
+            },
+            {
+                period: 'Kerajaan Abad Pertengahan',
+                text: 'Dinasti Capet dan Valois memerintah Prancis. Perang Seratus Tahun (1337-1453) melawan Inggris dimenangkan berkat Jeanne d\'Arc. Prancis menjadi kerajaan terkuat di Eropa di bawah Louis XIV "Raja Matahari".'
+            },
+            {
+                period: 'Revolusi Prancis',
+                text: '14 Juli 1789, rakyat Paris menyerbu Penjara Bastille — awal Revolusi Prancis. Monarki digulingkan, Declaration of the Rights of Man (1789) lahir. Napoleon Bonaparte naik kekuasaan 1799, menaklukkan sebagian Eropa sebelum dikalahkan di Waterloo (1815).'
+            },
+            {
+                period: 'Abad 19-20',
+                text: 'Prancis mengalami pergolakan: Restorasi, Revolusi 1848, Komun Paris 1871, Perang Prancis-Prusia. Dua Perang Dunia menghancurkan Prancis; dijajah Jerman 1940-1944 sebelum dibebaskan Charles de Gaulle.'
+            },
+            {
+                period: 'Era Modern',
+                text: 'Republik Kelima didirikan de Gaulle tahun 1958. Prancis menjadi anggota pendiri Uni Eropa, kekuatan nuklir, dan pusat kebudayaan dunia. Paris tetap menjadi ibu kota mode, seni, dan diplomasi internasional.'
+            }
+        ],
+        figures: [
+            { name: 'Charlemagne', role: 'Kaisar Romawi Suci', initials: 'C', bio: 'Raja Franka (768-814) yang menyatukan sebagian besar Eropa Barat. Dinobatkan Kaisar oleh Paus tahun 800. Bapak peradaban Eropa abad pertengahan.' },
+            { name: 'Jeanne d\'Arc', role: 'Pahlawan Nasional', initials: 'J', bio: 'Gadis petani yang mengklaim mendapat wahyu ilahi untuk membebaskan Prancis dari Inggris. Memimpin pasukan di usia 17, ditangkap dan dibakar hidup-hidup tahun 1431. Dikanonisasi 1920.' },
+            { name: 'Napoleon Bonaparte', role: 'Kaisar Prancis', initials: 'N', bio: 'Jenderal yang menjadi Kaisar (1804-1815). Kode Napoleon menjadi dasar hukum modern Eropa. Penakluk brilian yang akhirnya kalah di Waterloo dan diasingkan ke St. Helena.' },
+            { name: 'Charles de Gaulle', role: 'Pemimpin Prancis Bebas', initials: 'D', bio: 'Jenderal yang memimpin perlawanan terhadap Nazi dari London. Pendiri Republik Kelima (1958) dan presiden pertama. Arsitek kemerdekaan Prancis dan integrasi Eropa.' }
+        ]
+    },
+    {
+        id: 'brasil',
+        name: 'Brasil',
+        continent: 'amerika',
+        emblem: '🌴',
+        preview: 'Raksasa Amerika Latin yang lahir dari kolonialisme Portugis dan menjadi negara terbesar di belahan bumi selatan.',
+        history: [
+            {
+                period: 'Penduduk Asli',
+                text: 'Sebelum kedatangan Eropa, Brasil dihuni oleh jutaan penduduk asli dari ratusan suku seperti Tupi, Guarani, dan Yanomami dengan kebudayaan yang beragam.'
+            },
+            {
+                period: 'Kolonialisme Portugis',
+                text: 'Pedro Álvares Cabral mendarat tahun 1500. Portugis mendirikan koloni, menanam tebu, dan mengimpor jutaan budak Afrika (4 juta orang, terbanyak di Amerika). Periode ini membentuk demografi dan budaya Brasil modern.'
+            },
+            {
+                period: 'Kemerdekaan Damai',
+                text: '1808 keluarga kerajaan Portugis lari ke Brasil dari Napoleon. 1822 Pangeran Pedro memproklamasikan kemerdekaan (7 September) dan menjadi Kaisar Pedro I. Brasil satu-satunya negara Amerika Latin yang merdeka melalui monarki, bukan revolusi berdarah.'
+            },
+            {
+                period: 'Republik & Abolisi',
+                text: '1889 kudeta militer mendirikan republik. 1888 Brasil menjadi negara terakhir di Amerika yang menghapus perbudakan (Lei Áurea). Imigrasi besar dari Italia, Jerman, Jepang mengubah wajah Brasil.'
+            },
+            {
+                period: 'Era Modern',
+                text: 'Abad 20 diwarnai kediktatoran Vargas (1930-45, 1964-85) dan demokrasi. Brasil kini negara terbesar ke-5 di dunia, kekuatan ekonomi BRICS, terkenal dengan karnaval, sepak bola, dan Hutan Amazon — paru-paru dunia.'
+            }
+        ],
+        figures: [
+            { name: 'Dom Pedro I', role: 'Proklamator Kemerdekaan', initials: 'P', bio: 'Pangeran Portugis yang memproklamasikan kemerdekaan Brasil 7 September 1822 dengan seruan terkenal "Independência ou Morte!" di tepi Sungai Ipiranga.' },
+            { name: 'Tiradentes', role: 'Martir Kemerdekaan', initials: 'T', bio: 'Pemimpin Inconfidência Mineira (1789), gerakan kemerdekaan awal. Dieksekusi 1792 dan menjadi simbol perjuangan kemerdekaan Brasil.' },
+            { name: 'Princesa Isabel', role: 'Pembebas Budak', initials: 'I', bio: 'Putri Mahkota yang menandatangani Lei Áurea (Hukum Emas) 13 Mei 1888, menghapus perbudakan di Brasil setelah 300 tahun.' },
+            { name: 'Getúlio Vargas', role: 'Bapak Brasil Modern', initials: 'G', bio: 'Presiden 1930-45 dan 1951-54. Modernisasi industri, hak buruh, dan negara kesejahteraan. Sosok kontroversial yang memadukan populisme dan otoritarianisme.' }
+        ]
+    },
+    {
+        id: 'india',
+        name: 'India',
+        continent: 'asia',
+        emblem: '🕌',
+        preview: 'Subbenua dengan peradaban 5000 tahun, tempat lahirnya Hindu, Buddha, dan gerakan kemerdekaan damai terbesar abad 20.',
+        history: [
+            {
+                period: 'Peradaban Lembah Indus',
+                text: 'Peradaban Harappa dan Mohenjo-Daro (2600-1900 SM) menjadi salah satu peradaban tertua dunia dengan tata kota canggih. Disusul periode Weda dan lahirnya Hindu.'
+            },
+            {
+                period: 'Kerajaan Kuno',
+                text: 'Kerajaan Magadha, Maurya (dengan Ashoka Agung yang menyebarkan Buddha), Gupta (zaman keemasan India), Chola di selatan. Lahirnya Buddha dan Mahavira (Jainisme) pada abad 6 SM.'
+            },
+            {
+                period: 'Kesultanan Delhi & Mughal',
+                text: 'Islam masuk abad 8, Kesultanan Delhi (1206-1526), lalu Kekaisaran Mughal (1526-1857). Akbar Agung menyatukan India, Shah Jahan membangun Taj Mahal. India menjadi salah satu ekonomi terbesar dunia.'
+            },
+            {
+                period: 'Kolonialisme Inggris',
+                text: 'British East India Company masuk abad 17, menguasai India setelah Pertempuran Plassey (1757). Setelah Pemberontakan 1857, Inggris memerintah langsung (British Raj). India menjadi "mutiara mahkota" Inggris.'
+            },
+            {
+                period: 'Kemerdekaan & Modern',
+                text: 'Gerakan kemerdekaan dipimpin Mahatma Gandhi dengan satyagraha (perlawanan tanpa kekerasan). 15 Agustus 1947 India merdeka namun terpecah menjadi India dan Pakistan. Kini India demokrasi terbesar dunia dengan 1,4 miliar penduduk dan kekuatan teknologi global.'
+            }
+        ],
+        figures: [
+            { name: 'Ashoka Agung', role: 'Kaisar Maurya', initials: 'A', bio: 'Kaisar yang menyatukan hampir seluruh India (268-232 SM). Setelah pertumpahan darah di Kalinga, ia memeluk Buddha dan menyebarkan perdamaian ke seluruh Asia.' },
+            { name: 'Akbar Agung', role: 'Kaisar Mughal', initials: 'K', bio: 'Kaisar Mughal (1556-1605) yang memperluas kekaisaran dan terkenal karena toleransi beragama. Menyatukan India Hindu-Muslim dalam administrasi yang adil.' },
+            { name: 'Mahatma Gandhi', role: 'Bapak Bangsa India', initials: 'G', bio: 'Pemimpin gerakan kemerdekaan dengan ahimsa (non-kekerasan) dan satyagraha. Menginspirasi Martin Luther King Jr. dan Nelson Mandela. Terbunuh 30 Januari 1948.' },
+            { name: 'Jawaharlal Nehru', role: 'Perdana Menteri Pertama', initials: 'N', bio: 'Murid Gandhi dan PM pertama India (1947-1964). Arsitek India modern, sekuler, dan demokratis. Tokoh pendiri Gerakan Non-Blok.' }
+        ]
+    },
+    {
+        id: 'australia',
+        name: 'Australia',
+        continent: 'oceania',
+        emblem: '🦘',
+        preview: 'Benua sekaligus negara dengan warisan Aborigin 65.000 tahun dan sejarah kolonial Inggris yang unik.',
+        history: [
+            {
+                period: 'Penduduk Aborigin',
+                text: 'Aborigin dan Torres Strait Islander telah menghuni Australia selama 65.000 tahun — salah satu kebudayaan tertua yang masih bertahan. Dreamtime, seni cadas, dan hubungan spiritual dengan tanah menjadi inti kebudayaan.'
+            },
+            {
+                period: 'Penjelajahan Eropa',
+                text: 'Belanda (Willem Janszoon, 1606) dan Abel Tasman (1642) menjelajahi pesisir. James Cook (Inggris) memetakan pantai timur 1770 dan mengklaimnya untuk Inggris, menamai New South Wales.'
+            },
+            {
+                period: 'Kolonial & Koloni Narapidana',
+                text: '1788 First Fleet membawa narapidana Inggris mendirikan Sydney. Selama 80 tahun, 162.000 narapidana dideportasi. Koloni-koloni lain berdiri: Tasmania, Victoria, Queensland, Australia Selatan, Australia Barat.'
+            },
+            {
+                period: 'Federasi & Perang Dunia',
+                text: '1 Januari 1901 enam koloni bersatu menjadi Commonwealth of Australia. Berperang di Gallipoli (1915) yang melahirkan ANZAC legend. Berperang di PD I dan PD II, termasuk pertempuran Kokoda melawan Jepang.'
+            },
+            {
+                period: 'Era Modern',
+                text: 'Australia menjadi negara multikultural setelah abolisi White Australia Policy (1970-an). 1999 referendum menolak menjadi republik. Kini negara maju dengan ekonomi kuat, demokrasi stabil, dan terus berdamai dengan masa lalu Aborigin melalui rekonsiliasi.'
+            }
+        ],
+        figures: [
+            { name: 'Captain James Cook', role: 'Penjelajah Inggris', initials: 'J', bio: 'Kapten Inggris yang memetakan pantai timur Australia 1770 dan mengklaimnya untuk Kerajaan Inggris. Pelayarannya mengubah peta dunia.' },
+            { name: 'Ned Kelly', role: 'Bandit Legendaris', initials: 'N', bio: 'Penjahat Australia paling terkenal (1855-1880). Dianggap pahlawan rakyat oleh sebagian orang yang menentang polisi Inggris. Simbol perlawanan kelas pekerja.' },
+            { name: 'Sir Robert Menzies', role: 'PM Terlama', initials: 'R', bio: 'Perdana Menteri terlama Australia (18 periode, 1939-41 & 1949-66). Pendiri Partai Liberal dan arsitek Australia pasca-perang.' },
+            { name: 'Gough Whitlam', role: 'PM Reformis', initials: 'W', bio: 'PM ke-21 (1972-75) yang mengakhiri White Australia Policy, mengakui Tiongkok, dan memperkenalkan Medicare. Pemecatan kontroversialnya 1975 menjadi krisis konstitusional.' }
+        ]
+    }
+];
+
+/* ---------- RENDER KARTU NEGARA ---------- */
+const countriesGrid = document.getElementById('countriesGrid');
+
+function renderCountries(list = COUNTRIES) {
+    countriesGrid.innerHTML = '';
+    if (list.length === 0) {
+        countriesGrid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--text-muted);font-style:italic;padding:3rem;">Tidak ada negara yang cocok dengan pencarian Anda.</p>';
+        return;
+    }
+    list.forEach((country, index) => {
+        const card = document.createElement('div');
+        card.className = 'country-card';
+        card.dataset.continent = country.continent;
+        card.dataset.id = country.id;
+        card.style.transitionDelay = (index * 0.05) + 's';
+        card.innerHTML = `
+            <div class="country-emblem">${country.emblem}</div>
+            <div class="country-info">
+                <h3 class="country-name">${country.name}</h3>
+                <p class="country-continent">${country.continent}</p>
+                <p class="country-preview">${country.preview}</p>
+                <button class="country-view-btn">Lihat Pameran</button>
+            </div>
+        `;
+        card.addEventListener('click', () => openCountryModal(country.id));
+        countriesGrid.appendChild(card);
+        // Trigger animasi fade-in
+        setTimeout(() => card.classList.add('visible'), 50);
+    });
+}
+
+renderCountries();
+
+/* ---------- PENCARIAN & FILTER ---------- */
+const searchInput = document.getElementById('searchInput');
+const filterTabs = document.getElementById('filterTabs');
+let currentFilter = 'all';
+
+function applyFilters() {
+    const query = searchInput.value.toLowerCase().trim();
+    let filtered = COUNTRIES;
+
+    // Filter benua
+    if (currentFilter !== 'all') {
+        filtered = filtered.filter(c => c.continent === currentFilter);
+    }
+
+    // Filter pencarian (nama negara, preview, atau nama tokoh)
+    if (query) {
+        filtered = filtered.filter(c => {
+            const nameMatch = c.name.toLowerCase().includes(query);
+            const previewMatch = c.preview.toLowerCase().includes(query);
+            const figureMatch = c.figures.some(f =>
+                f.name.toLowerCase().includes(query) ||
+                f.role.toLowerCase().includes(query)
+            );
+            return nameMatch || previewMatch || figureMatch;
+        });
+    }
+
+    renderCountries(filtered);
+}
+
+searchInput.addEventListener('input', applyFilters);
+
+filterTabs.addEventListener('click', (e) => {
+    if (e.target.classList.contains('filter-btn')) {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        currentFilter = e.target.dataset.filter;
+        applyFilters();
+    }
+});
+
+/* ---------- MODAL: NEGARA ---------- */
+const countryModal = document.getElementById('countryModal');
+const closeCountryModal = document.getElementById('closeCountryModal');
+
+function openCountryModal(id) {
+    const country = COUNTRIES.find(c => c.id === id);
+    if (!country) return;
+
+    document.getElementById('modalEmblem').textContent = country.emblem;
+    document.getElementById('modalCountryName').textContent = country.name;
+    document.getElementById('modalContinent').textContent = country.continent;
+
+    // Render sejarah
+    const historyContainer = document.getElementById('modalHistory');
+    historyContainer.innerHTML = country.history.map(h => `
+        <div class="history-block">
+            <p class="history-period">${h.period}</p>
+            <p class="history-text">${h.text}</p>
+        </div>
+    `).join('');
+
+    // Render tokoh
+    const figuresContainer = document.getElementById('modalFigures');
+    figuresContainer.innerHTML = country.figures.map((f, idx) => `
+        <div class="figure-card" data-country="${id}" data-figure="${idx}">
+            <div class="figure-avatar">${f.initials}</div>
+            <h4 class="figure-name">${f.name}</h4>
+            <p class="figure-role">${f.role}</p>
+        </div>
+    `).join('');
+
+    // Tambahkan event listener ke setiap kartu tokoh
+    figuresContainer.querySelectorAll('.figure-card').forEach(card => {
+        card.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const countryId = card.dataset.country;
+            const figureIdx = parseInt(card.dataset.figure);
+            openFigureModal(countryId, figureIdx);
+        });
+    });
+
+    countryModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+closeCountryModal.addEventListener('click', () => {
+    countryModal.classList.remove('active');
+    document.body.style.overflow = '';
+});
+
+countryModal.addEventListener('click', (e) => {
+    if (e.target === countryModal) {
+        countryModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+
+/* ---------- MODAL: TOKOH ---------- */
+const figureModal = document.getElementById('figureModal');
+const closeFigureModal = document.getElementById('closeFigureModal');
+
+function openFigureModal(countryId, figureIdx) {
+    const country = COUNTRIES.find(c => c.id === countryId);
+    if (!country) return;
+    const figure = country.figures[figureIdx];
+
+    document.getElementById('figureAvatar').textContent = figure.initials;
+    document.getElementById('figureName').textContent = figure.name;
+    document.getElementById('figureRole').textContent = figure.role;
+    document.getElementById('figureBio').textContent = figure.bio;
+
+    figureModal.classList.add('active');
+}
+
+closeFigureModal.addEventListener('click', () => {
+    figureModal.classList.remove('active');
+});
+
+figureModal.addEventListener('click', (e) => {
+    if (e.target === figureModal) {
+        figureModal.classList.remove('active');
+    }
+});
+
+/* ---------- TUTUP MODAL DENGAN ESC ---------- */
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        countryModal.classList.remove('active');
+        figureModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+
+/* ---------- HAMBURGER MENU ---------- */
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+});
+
+// Tutup menu saat link di-klik (mobile)
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+/* ---------- ANIMASI SCROLL (Intersection Observer) ---------- */
+const observerOptions = {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
+
+// Observasi elemen fade-in dan era-item
+document.querySelectorAll('.fade-in, .era-item').forEach(el => {
+    observer.observe(el);
+});
+
+/* ---------- EFEK NAVBAR SAAT SCROLL ---------- */
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.style.padding = '0.6rem 2rem';
+        navbar.style.background = 'rgba(13, 13, 13, 0.95)';
+    } else {
+        navbar.style.padding = '1rem 2rem';
+        navbar.style.background = 'rgba(13, 13, 13, 0.85)';
+    }
+});
+
+/* ---------- LOG SELAMAT DATANG DI KONSOL ---------- */
+console.log('%c🏛️ Museum Sejarah Dunia & Peradaban Negara', 'color:#d4af37;font-size:20px;font-weight:bold;');
+console.log('%c"Sejarah adalah saksi masa lalu, cahaya kebenaran, dan teladan bagi masa depan."', 'color:#c8c2b3;font-style:italic;');
+</script>
+
+</body>
+</html>
